@@ -1,0 +1,979 @@
+{
+  "meta": {
+    "factory_name": "Customized_PC_Assembly_Cell",
+    "version": "1.0",
+    "scenario": "3x3 matrix-structured customized PC assembly cell",
+    "domain": "pc_assembly",
+    "production_paradigm": "matrix"
+  },
+  "case_study_model": {
+    "product_customization": {
+      "CPU": 4,
+      "GPU": 4,
+      "Storage": 3,
+      "Cooling": 3
+    },
+    "arrival_process": {
+      "distribution": "poisson",
+      "loads": [
+        {
+          "name": "low",
+          "mtba": 22.0
+        },
+        {
+          "name": "medium",
+          "mtba": 16.0
+        },
+        {
+          "name": "high",
+          "mtba": 11.0
+        }
+      ],
+      "orders_per_scenario": 0,
+      "replications": 0
+    },
+    "replanning_triggers": [
+      "new_order_arrival",
+      "buffer_blocking_released",
+      "failed_device_repaired",
+      "exception_raised"
+    ]
+  },
+  "instruction_capability_set": {
+    "supported_instructions": [
+      {
+        "opcode": "000001",
+        "func": "001",
+        "name": "PROCESS",
+        "supported_rp": [
+          {
+            "rp": "00001",
+            "description": "Base_Assembly"
+          },
+          {
+            "rp": "00010",
+            "description": "CPU_Install",
+            "aliases": [
+              "CPU_Mount"
+            ]
+          },
+          {
+            "rp": "00011",
+            "description": "Storage_Install"
+          },
+          {
+            "rp": "00100",
+            "description": "GPU_Install"
+          },
+          {
+            "rp": "00101",
+            "description": "Cooler_Install"
+          },
+          {
+            "rp": "00110",
+            "description": "Case_Assembly"
+          },
+          {
+            "rp": "01001",
+            "description": "Packaging"
+          }
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "name": "INSPECT",
+        "supported_rp": [
+          {
+            "rp": "00001",
+            "description": "Power_On_Test"
+          },
+          {
+            "rp": "00010",
+            "description": "Benchmark_Test"
+          },
+          {
+            "rp": "00100",
+            "description": "Accessory_Check"
+          }
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "name": "ADJUST",
+        "supported_rp": [
+          {
+            "rp": "00001",
+            "description": "Material_Replenish"
+          },
+          {
+            "rp": "00010",
+            "description": "Tooling_Adjust"
+          },
+          {
+            "rp": "00011",
+            "description": "Quality_Rework"
+          },
+          {
+            "rp": "00100",
+            "description": "Operator_Reassign"
+          }
+        ]
+      },
+      {
+        "opcode": "100101",
+        "func": "000",
+        "name": "PLOAD",
+        "supported_rp": [
+          {
+            "rp": "00000",
+            "description": "Warehouse_To_Line_Side"
+          }
+        ]
+      },
+      {
+        "opcode": "101101",
+        "func": "000",
+        "name": "PSTORE",
+        "supported_rp": [
+          {
+            "rp": "00000",
+            "description": "Line_Side_To_Warehouse"
+          }
+        ]
+      }
+    ],
+    "palu_definitions": [
+      {
+        "palu_id": 0,
+        "device_type": "Assembly_Robot",
+        "quantity": 5,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00010"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00100"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00101"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00110"
+          }
+        ]
+      },
+      {
+        "palu_id": 1,
+        "device_type": "Test_Bench",
+        "quantity": 3,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00010"
+          }
+        ]
+      },
+      {
+        "palu_id": 2,
+        "device_type": "Packaging_Station",
+        "quantity": 2,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "01001"
+          },
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00100"
+          }
+        ]
+      },
+      {
+        "palu_id": 3,
+        "device_type": "Logistics_AGV",
+        "quantity": 6,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "010",
+            "rp": "00000"
+          },
+          {
+            "opcode": "100101",
+            "func": "000",
+            "rp": "00000"
+          },
+          {
+            "opcode": "101101",
+            "func": "000",
+            "rp": "00000"
+          }
+        ]
+      },
+      {
+        "palu_id": 4,
+        "device_type": "Recovery_Operator",
+        "quantity": 2,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00010"
+          },
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00100"
+          }
+        ]
+      }
+    ]
+  },
+  "addressing_model": {
+    "storage_regions": {
+      "memory_ids": [
+        100
+      ],
+      "register_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    "workstation_mapping": [
+      {
+        "workstation_id": 0,
+        "pm_type": "assembly",
+        "assigned_registers": [
+          0,
+          1
+        ],
+        "assigned_palus": [
+          0,
+          3
+        ]
+      },
+      {
+        "workstation_id": 1,
+        "pm_type": "assembly",
+        "assigned_registers": [
+          2,
+          3
+        ],
+        "assigned_palus": [
+          0,
+          3
+        ]
+      },
+      {
+        "workstation_id": 2,
+        "pm_type": "assembly",
+        "assigned_registers": [
+          4,
+          5
+        ],
+        "assigned_palus": [
+          0,
+          3
+        ]
+      },
+      {
+        "workstation_id": 3,
+        "pm_type": "assembly",
+        "assigned_registers": [
+          6,
+          7
+        ],
+        "assigned_palus": [
+          0,
+          3
+        ]
+      },
+      {
+        "workstation_id": 4,
+        "pm_type": "assembly",
+        "assigned_registers": [
+          8,
+          9
+        ],
+        "assigned_palus": [
+          0,
+          3
+        ]
+      },
+      {
+        "workstation_id": 5,
+        "pm_type": "testing",
+        "assigned_registers": [
+          10,
+          11
+        ],
+        "assigned_palus": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "workstation_id": 6,
+        "pm_type": "testing",
+        "assigned_registers": [
+          12,
+          13
+        ],
+        "assigned_palus": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "workstation_id": 7,
+        "pm_type": "testing",
+        "assigned_registers": [
+          14,
+          15
+        ],
+        "assigned_palus": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "workstation_id": 8,
+        "pm_type": "packaging",
+        "assigned_registers": [
+          16,
+          17
+        ],
+        "assigned_palus": [
+          2,
+          3,
+          4
+        ]
+      }
+    ]
+  },
+  "storage_model": {
+    "capacity_constraints": [
+      {
+        "storage_id": 0,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 0,
+        "capacity": 2
+      },
+      {
+        "storage_id": 1,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 0,
+        "capacity": 2
+      },
+      {
+        "storage_id": 2,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 1,
+        "capacity": 2
+      },
+      {
+        "storage_id": 3,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 1,
+        "capacity": 2
+      },
+      {
+        "storage_id": 4,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 2,
+        "capacity": 2
+      },
+      {
+        "storage_id": 5,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 2,
+        "capacity": 2
+      },
+      {
+        "storage_id": 6,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 3,
+        "capacity": 2
+      },
+      {
+        "storage_id": 7,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 3,
+        "capacity": 2
+      },
+      {
+        "storage_id": 8,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 4,
+        "capacity": 2
+      },
+      {
+        "storage_id": 9,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 4,
+        "capacity": 2
+      },
+      {
+        "storage_id": 10,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 5,
+        "capacity": 2
+      },
+      {
+        "storage_id": 11,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 5,
+        "capacity": 2
+      },
+      {
+        "storage_id": 12,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 6,
+        "capacity": 2
+      },
+      {
+        "storage_id": 13,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 6,
+        "capacity": 2
+      },
+      {
+        "storage_id": 14,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 7,
+        "capacity": 2
+      },
+      {
+        "storage_id": 15,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 7,
+        "capacity": 2
+      },
+      {
+        "storage_id": 16,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 8,
+        "capacity": 2
+      },
+      {
+        "storage_id": 17,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 8,
+        "capacity": 2
+      },
+      {
+        "storage_id": 100,
+        "type": "memory",
+        "role": "warehouse",
+        "capacity": 5000
+      }
+    ]
+  },
+  "runtime_environment": {
+    "default_catch_deadline": 20.0,
+    "min_catch_deadline": 1.0,
+    "fault_release_latency": 3.0,
+    "catch_triggers": [
+      {
+        "exception_type": "MaterialMissing",
+        "trigger_operations": [
+          {
+            "opcode": "100101",
+            "func": "000",
+            "rp": "00000"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00010"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00100"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00101"
+          }
+        ]
+      },
+      {
+        "exception_type": "ToolingDeviation",
+        "trigger_operations": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00110"
+          }
+        ]
+      },
+      {
+        "exception_type": "QualityFault",
+        "trigger_operations": [
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00010"
+          }
+        ]
+      },
+      {
+        "exception_type": "MachineFailure",
+        "trigger_operations": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00110"
+          },
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00001"
+          }
+        ]
+      }
+    ],
+    "exception_codes": {
+      "ResourceFault": 1,
+      "MaterialMissing": 2,
+      "Timeout": 3,
+      "QualityFault": 4,
+      "DeviceOverheat": 5,
+      "MachineFailure": 6,
+      "OperatorUnavailable": 7,
+      "ToolingDeviation": 8,
+      "BufferUnavailable": 9,
+      "LogisticsDepleted": 10
+    }
+  },
+  "scheduling_model": {
+    "logistics_layout": {
+      "warehouse": {
+        "storage_id": 100,
+        "coord": [
+          -1,
+          -1
+        ]
+      },
+      "warehouse_base_time": 6.0,
+      "pm_base_time": 3.0,
+      "distance_factor": 2.0,
+      "same_pm_time": 1.0,
+      "process_modules": [
+        {
+          "workstation_id": 0,
+          "pm_type": "assembly",
+          "coord": [
+            0,
+            0
+          ]
+        },
+        {
+          "workstation_id": 1,
+          "pm_type": "assembly",
+          "coord": [
+            1,
+            0
+          ]
+        },
+        {
+          "workstation_id": 2,
+          "pm_type": "assembly",
+          "coord": [
+            2,
+            0
+          ]
+        },
+        {
+          "workstation_id": 3,
+          "pm_type": "assembly",
+          "coord": [
+            0,
+            1
+          ]
+        },
+        {
+          "workstation_id": 4,
+          "pm_type": "assembly",
+          "coord": [
+            1,
+            1
+          ]
+        },
+        {
+          "workstation_id": 5,
+          "pm_type": "testing",
+          "coord": [
+            2,
+            1
+          ]
+        },
+        {
+          "workstation_id": 6,
+          "pm_type": "testing",
+          "coord": [
+            0,
+            2
+          ]
+        },
+        {
+          "workstation_id": 7,
+          "pm_type": "testing",
+          "coord": [
+            1,
+            2
+          ]
+        },
+        {
+          "workstation_id": 8,
+          "pm_type": "packaging",
+          "coord": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    "processing_times": [
+      {
+        "opcode": "100101",
+        "func": "000",
+        "rp": "00000",
+        "expected_time": 6.0
+      },
+      {
+        "opcode": "101101",
+        "func": "000",
+        "rp": "00000",
+        "expected_time": 6.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00001",
+        "expected_time": 8.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00010",
+        "expected_time": 7.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00011",
+        "expected_time": 5.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00100",
+        "expected_time": 9.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00101",
+        "expected_time": 6.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00110",
+        "expected_time": 7.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "01001",
+        "expected_time": 5.0
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "rp": "00001",
+        "expected_time": 6.0
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "rp": "00010",
+        "expected_time": 12.0
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "rp": "00100",
+        "expected_time": 4.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00001",
+        "expected_time": 8.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00010",
+        "expected_time": 5.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00011",
+        "expected_time": 10.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00100",
+        "expected_time": 4.0
+      }
+    ],
+    "standard_logistics_times": [
+      {
+        "from_type": "memory",
+        "to_type": "register",
+        "time": 10.0
+      },
+      {
+        "from_type": "register",
+        "to_type": "memory",
+        "time": 10.0
+      },
+      {
+        "from_type": "register",
+        "to_type": "register",
+        "time": 5.0
+      },
+      {
+        "from_type": "memory",
+        "to_type": "memory",
+        "time": 0.0
+      }
+    ],
+    "setup_time_model": {
+      "component_families": [
+        {
+          "name": "CPU",
+          "models": [
+            "CPU_1",
+            "CPU_2",
+            "CPU_3",
+            "CPU_4"
+          ],
+          "matrix": [
+            [
+              0.0,
+              5.0,
+              10.0,
+              15.0
+            ],
+            [
+              5.0,
+              0.0,
+              5.0,
+              10.0
+            ],
+            [
+              10.0,
+              5.0,
+              0.0,
+              5.0
+            ],
+            [
+              15.0,
+              10.0,
+              5.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "GPU",
+          "models": [
+            "GPU_NONE",
+            "GPU_1",
+            "GPU_2",
+            "GPU_3"
+          ],
+          "matrix": [
+            [
+              0.0,
+              6.0,
+              12.0,
+              18.0
+            ],
+            [
+              6.0,
+              0.0,
+              6.0,
+              12.0
+            ],
+            [
+              12.0,
+              6.0,
+              0.0,
+              6.0
+            ],
+            [
+              18.0,
+              12.0,
+              6.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "Storage",
+          "models": [
+            "SSD_1",
+            "SSD_2",
+            "SSD_3"
+          ],
+          "matrix": [
+            [
+              0.0,
+              3.0,
+              6.0
+            ],
+            [
+              3.0,
+              0.0,
+              3.0
+            ],
+            [
+              6.0,
+              3.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "Cooling",
+          "models": [
+            "COOLING_NONE",
+            "COOLING_1",
+            "COOLING_2"
+          ],
+          "matrix": [
+            [
+              0.0,
+              3.0,
+              6.0
+            ],
+            [
+              3.0,
+              0.0,
+              3.0
+            ],
+            [
+              6.0,
+              3.0,
+              0.0
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

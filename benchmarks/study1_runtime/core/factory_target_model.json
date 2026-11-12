@@ -1,0 +1,436 @@
+{
+  "meta": {
+    "factory_name": "Customized_PC_Assembly_MMS",
+    "version": "3.0",
+    "scenario": "4x4 matrix-structured customized PC assembly factory",
+    "legacy_model": "factory_target_model_legacy_cnc.json"
+  },
+  "case_study_model": {
+    "product_customization": {
+      "cpu": 5,
+      "motherboard": 4,
+      "ram": 4,
+      "gpu": 5,
+      "storage": 4,
+      "cooling": 3,
+      "psu": 1,
+      "case": 1,
+      "gpu_optional_model": "GPU_NONE",
+      "cooling_optional_model": "COOLING_NONE"
+    },
+    "arrival_process": {
+      "distribution": "poisson",
+      "loads": [
+        {"name": "low", "mean_time_between_arrivals": 18},
+        {"name": "medium", "mean_time_between_arrivals": 13},
+        {"name": "high", "mean_time_between_arrivals": 1.4}
+      ],
+      "orders_per_scenario": 200,
+      "replications": 100
+    },
+    "replanning_triggers": [
+      "new_order_arrival",
+      "buffer_blocking_released",
+      "failed_device_repaired",
+      "exception_raised",
+      "fixed_interval_10_min"
+    ],
+    "falang_dispatch_weights": {
+      "finish": 1.0,
+      "start": 9.5,
+      "planned_start": 0.0,
+      "setup": -1.5,
+      "tardiness": 0.0,
+      "waiting": 3.0,
+      "remaining_processing": 0.05,
+      "arrival_time": 0.059
+    }
+  },
+  "instruction_capability_set": {
+    "supported_instructions": [
+      {
+        "opcode": "000001",
+        "func": "001",
+        "name": "PROCESS",
+        "supported_rp": [
+          {"rp": "00001", "description": "Base_Assembly", "aliases": ["High_Precision_CNC_Milling"]},
+          {"rp": "00010", "description": "CPU_Install"},
+          {"rp": "00011", "description": "Memory_Install"},
+          {"rp": "00100", "description": "Storage_Install"},
+          {"rp": "00101", "description": "GPU_Install"},
+          {"rp": "00110", "description": "Cooling_Install"},
+          {"rp": "00111", "description": "Power_Install"},
+          {"rp": "01000", "description": "Case_Assembly"},
+          {"rp": "01001", "description": "Packaging"}
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "010",
+        "name": "MOVE",
+        "supported_rp": [
+          {"rp": "00000", "description": "Matrix_Buffer_Move", "aliases": ["AGV_Move_Between_L1_L2_And_Workstations"]}
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "name": "INSPECT",
+        "supported_rp": [
+          {"rp": "00001", "description": "Power_On_Test", "aliases": ["Camera_Vision_Check", "Visual_Inspection"]},
+          {"rp": "00010", "description": "Benchmark_Test"},
+          {"rp": "00011", "description": "Thermal_Test"},
+          {"rp": "00100", "description": "Accessory_Check"}
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "name": "ADJUST",
+        "supported_rp": [
+          {"rp": "00001", "description": "MaterialMissing_Recovery", "aliases": ["Emergency_Unlock_Fixture"]},
+          {"rp": "00010", "description": "MachineFailure_Reset"},
+          {"rp": "00011", "description": "OperatorUnavailable_Reassign"},
+          {"rp": "00100", "description": "QualityFault_Rework"},
+          {"rp": "00101", "description": "MaterialMissing_Replenish"},
+          {"rp": "00110", "description": "ToolingDeviation_Adjust"},
+          {"rp": "00111", "description": "ToolingDeviation_Recheck"},
+          {"rp": "01000", "description": "QualityFault_Reinspect"}
+        ]
+      },
+      {
+        "opcode": "100101",
+        "func": "000",
+        "name": "PLOAD",
+        "supported_rp": [
+          {"rp": "00000", "description": "Warehouse_To_PM_Buffer", "aliases": ["AGV_Load_From_Warehouse_To_Target_Storage"]}
+        ]
+      },
+      {
+        "opcode": "101101",
+        "func": "000",
+        "name": "PSTORE",
+        "supported_rp": [
+          {"rp": "00000", "description": "PM_Buffer_To_Warehouse", "aliases": ["AGV_Store_From_Source_Storage_Back_To_Warehouse"]}
+        ]
+      }
+    ],
+    "palu_definitions": [
+      {
+        "palu_id": 0,
+        "device_type": "Human_Assembly_RM",
+        "quantity": 8,
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "001", "rp": "00001"},
+          {"opcode": "000001", "func": "001", "rp": "00010"},
+          {"opcode": "000001", "func": "001", "rp": "00011"},
+          {"opcode": "000001", "func": "001", "rp": "00100"},
+          {"opcode": "000001", "func": "001", "rp": "00111"},
+          {"opcode": "000001", "func": "100", "rp": "00001"}
+        ]
+      },
+      {
+        "palu_id": 1,
+        "device_type": "Electrical_Test_Bench_RM",
+        "quantity": 7,
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "011", "rp": "00001"},
+          {"opcode": "000001", "func": "011", "rp": "00010"},
+          {"opcode": "000001", "func": "011", "rp": "00100"}
+        ]
+      },
+      {
+        "palu_id": 2,
+        "device_type": "Logistics_AGV_RM",
+        "quantity": 18,
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "010", "rp": "00000"},
+          {"opcode": "100101", "func": "000", "rp": "00000"},
+          {"opcode": "101101", "func": "000", "rp": "00000"}
+        ]
+      },
+      {
+        "palu_id": 3,
+        "device_type": "Robot_Assembly_RM",
+        "quantity": 3,
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "001", "rp": "00001"},
+          {"opcode": "000001", "func": "001", "rp": "00010"},
+          {"opcode": "000001", "func": "001", "rp": "00101"},
+          {"opcode": "000001", "func": "001", "rp": "00110"},
+          {"opcode": "000001", "func": "001", "rp": "01000"}
+        ]
+      },
+      {
+        "palu_id": 4,
+        "device_type": "Thermal_Test_RM",
+        "quantity": 3,
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "011", "rp": "00011"}
+        ]
+      },
+      {
+        "palu_id": 5,
+        "device_type": "Packaging_Operator_RM",
+        "quantity": 4,
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "001", "rp": "01001"},
+          {"opcode": "000001", "func": "011", "rp": "00100"}
+        ]
+      },
+      {
+        "palu_id": 6,
+        "device_type": "Recovery_Operator_RM",
+        "quantity": 3,
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "100", "rp": "00001"},
+          {"opcode": "000001", "func": "100", "rp": "00010"},
+          {"opcode": "000001", "func": "100", "rp": "00011"},
+          {"opcode": "000001", "func": "100", "rp": "00100"},
+          {"opcode": "000001", "func": "100", "rp": "00101"},
+          {"opcode": "000001", "func": "100", "rp": "00110"},
+          {"opcode": "000001", "func": "100", "rp": "00111"},
+          {"opcode": "000001", "func": "100", "rp": "01000"}
+        ]
+      },
+      {
+        "palu_id": 7,
+        "device_type": "Redundant_MultiSkill_RM",
+        "quantity": 3,
+        "reserved_capacity_ratio": 0.6,
+        "normal_capacity_ratio": 0.4,
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "001", "rp": "00001"},
+          {"opcode": "000001", "func": "001", "rp": "00010"},
+          {"opcode": "000001", "func": "001", "rp": "00011"},
+          {"opcode": "000001", "func": "001", "rp": "00100"},
+          {"opcode": "000001", "func": "001", "rp": "00101"},
+          {"opcode": "000001", "func": "001", "rp": "00110"},
+          {"opcode": "000001", "func": "001", "rp": "00111"},
+          {"opcode": "000001", "func": "001", "rp": "01000"},
+          {"opcode": "000001", "func": "001", "rp": "01001"},
+          {"opcode": "000001", "func": "011", "rp": "00001"},
+          {"opcode": "000001", "func": "011", "rp": "00010"},
+          {"opcode": "000001", "func": "011", "rp": "00011"},
+          {"opcode": "000001", "func": "011", "rp": "00100"},
+          {"opcode": "000001", "func": "100", "rp": "00001"},
+          {"opcode": "000001", "func": "100", "rp": "00010"},
+          {"opcode": "000001", "func": "100", "rp": "00011"},
+          {"opcode": "000001", "func": "100", "rp": "00100"}
+        ]
+      }
+    ]
+  },
+  "addressing_model": {
+    "storage_regions": {
+      "memory_ids": [100],
+      "register_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+    },
+    "workstation_mapping": [
+      {"workstation_id": 0, "pm_type": "assembly", "assigned_registers": [0, 1], "assigned_palus": [0, 2]},
+      {"workstation_id": 1, "pm_type": "testing", "assigned_registers": [2, 3], "assigned_palus": [1, 2]},
+      {"workstation_id": 2, "pm_type": "assembly", "assigned_registers": [4, 5], "assigned_palus": [0, 2]},
+      {"workstation_id": 3, "pm_type": "packaging", "assigned_registers": [6, 7], "assigned_palus": [5, 2]},
+      {"workstation_id": 4, "pm_type": "assembly", "assigned_registers": [8, 9], "assigned_palus": [0, 2]},
+      {"workstation_id": 5, "pm_type": "assembly", "assigned_registers": [10, 11], "assigned_palus": [0, 3, 2]},
+      {"workstation_id": 6, "pm_type": "testing", "assigned_registers": [12, 13], "assigned_palus": [1, 4, 2]},
+      {"workstation_id": 7, "pm_type": "assembly_redundant", "assigned_registers": [14, 15], "assigned_palus": [0, 3, 6, 7, 2]},
+      {"workstation_id": 8, "pm_type": "testing", "assigned_registers": [16, 17], "assigned_palus": [1, 2]},
+      {"workstation_id": 9, "pm_type": "assembly", "assigned_registers": [18, 19], "assigned_palus": [0, 2]},
+      {"workstation_id": 10, "pm_type": "packaging", "assigned_registers": [20, 21], "assigned_palus": [5, 2]},
+      {"workstation_id": 11, "pm_type": "assembly", "assigned_registers": [22, 23], "assigned_palus": [0, 2]},
+      {"workstation_id": 12, "pm_type": "testing_redundant", "assigned_registers": [24, 25], "assigned_palus": [1, 4, 6, 7, 2]},
+      {"workstation_id": 13, "pm_type": "assembly", "assigned_registers": [26, 27], "assigned_palus": [0, 2]},
+      {"workstation_id": 14, "pm_type": "testing", "assigned_registers": [28, 29], "assigned_palus": [1, 4, 2]},
+      {"workstation_id": 15, "pm_type": "packaging_redundant", "assigned_registers": [30, 31], "assigned_palus": [5, 6, 7, 2]}
+    ]
+  },
+  "storage_model": {
+    "capacity_constraints": [
+      {"storage_id": 0, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 1, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 2, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 3, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 4, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 5, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 6, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 7, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 8, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 9, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 10, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 11, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 12, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 13, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 14, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 15, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 16, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 17, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 18, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 19, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 20, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 21, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 22, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 23, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 24, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 25, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 26, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 27, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 28, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 29, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 30, "type": "register", "role": "loading_buffer", "capacity": 1},
+      {"storage_id": 31, "type": "register", "role": "unloading_buffer", "capacity": 1},
+      {"storage_id": 100, "type": "memory", "role": "warehouse", "capacity": 10000}
+    ]
+  },
+  "runtime_environment": {
+    "default_catch_deadline": 20.0,
+    "min_catch_deadline": 1.0,
+    "fault_release_latency": 3.0,
+    "catch_triggers": [
+      {
+        "exception_type": "MaterialMissing",
+        "trigger_operations": [
+          {"opcode": "100101", "func": "000", "rp": "00000"},
+          {"opcode": "000001", "func": "001", "rp": "00010"},
+          {"opcode": "000001", "func": "001", "rp": "00011"},
+          {"opcode": "000001", "func": "001", "rp": "00100"},
+          {"opcode": "000001", "func": "001", "rp": "00101"}
+        ]
+      },
+      {
+        "exception_type": "MachineFailure",
+        "trigger_operations": [
+          {"opcode": "000001", "func": "001", "rp": "00001"},
+          {"opcode": "000001", "func": "001", "rp": "00101"},
+          {"opcode": "000001", "func": "011", "rp": "00010"},
+          {"opcode": "000001", "func": "011", "rp": "00011"}
+        ]
+      },
+      {
+        "exception_type": "OperatorUnavailable",
+        "trigger_operations": [
+          {"opcode": "000001", "func": "001", "rp": "00010"},
+          {"opcode": "000001", "func": "001", "rp": "00111"},
+          {"opcode": "000001", "func": "001", "rp": "01001"}
+        ]
+      },
+      {
+        "exception_type": "QualityFault",
+        "trigger_operations": [
+          {"opcode": "000001", "func": "011", "rp": "00001"},
+          {"opcode": "000001", "func": "011", "rp": "00010"},
+          {"opcode": "000001", "func": "011", "rp": "00011"}
+        ]
+      },
+      {
+        "exception_type": "ToolingDeviation",
+        "trigger_operations": [
+          {"opcode": "000001", "func": "001", "rp": "00001"},
+          {"opcode": "000001", "func": "001", "rp": "01000"}
+        ]
+      }
+    ],
+    "exception_codes": {
+      "ResourceFault": 1,
+      "MaterialMissing": 2,
+      "Timeout": 3,
+      "QualityFault": 4,
+      "DeviceOverheat": 5,
+      "MachineFailure": 6,
+      "OperatorUnavailable": 7,
+      "ToolingDeviation": 8,
+      "BufferUnavailable": 9,
+      "LogisticsDepleted": 10
+    }
+  },
+  "scheduling_model": {
+    "logistics_layout": {
+      "warehouse": {"storage_id": 100, "coord": [-1, -1]},
+      "warehouse_base_time": 8.0,
+      "pm_base_time": 4.0,
+      "distance_factor": 2.0,
+      "same_pm_time": 1.0,
+      "process_modules": [
+        {"workstation_id": 0, "pm_type": "assembly", "coord": [0, 0], "register_ids": [0, 1]},
+        {"workstation_id": 1, "pm_type": "testing", "coord": [1, 0], "register_ids": [2, 3]},
+        {"workstation_id": 2, "pm_type": "assembly", "coord": [2, 0], "register_ids": [4, 5]},
+        {"workstation_id": 3, "pm_type": "packaging", "coord": [3, 0], "register_ids": [6, 7]},
+        {"workstation_id": 4, "pm_type": "assembly", "coord": [0, 1], "register_ids": [8, 9]},
+        {"workstation_id": 5, "pm_type": "assembly", "coord": [1, 1], "register_ids": [10, 11]},
+        {"workstation_id": 6, "pm_type": "testing", "coord": [2, 1], "register_ids": [12, 13]},
+        {"workstation_id": 7, "pm_type": "assembly_redundant", "coord": [3, 1], "register_ids": [14, 15]},
+        {"workstation_id": 8, "pm_type": "testing", "coord": [0, 2], "register_ids": [16, 17]},
+        {"workstation_id": 9, "pm_type": "assembly", "coord": [1, 2], "register_ids": [18, 19]},
+        {"workstation_id": 10, "pm_type": "packaging", "coord": [2, 2], "register_ids": [20, 21]},
+        {"workstation_id": 11, "pm_type": "assembly", "coord": [3, 2], "register_ids": [22, 23]},
+        {"workstation_id": 12, "pm_type": "testing_redundant", "coord": [0, 3], "register_ids": [24, 25]},
+        {"workstation_id": 13, "pm_type": "assembly", "coord": [1, 3], "register_ids": [26, 27]},
+        {"workstation_id": 14, "pm_type": "testing", "coord": [2, 3], "register_ids": [28, 29]},
+        {"workstation_id": 15, "pm_type": "packaging_redundant", "coord": [3, 3], "register_ids": [30, 31]}
+      ]
+    },
+    "processing_times": [
+      {"opcode": "000001", "func": "001", "rp": "00001", "expected_time": 12},
+      {"opcode": "000001", "func": "001", "rp": "00010", "expected_time": 8},
+      {"opcode": "000001", "func": "001", "rp": "00011", "expected_time": 6},
+      {"opcode": "000001", "func": "001", "rp": "00100", "expected_time": 5},
+      {"opcode": "000001", "func": "001", "rp": "00101", "expected_time": 10},
+      {"opcode": "000001", "func": "001", "rp": "00110", "expected_time": 7},
+      {"opcode": "000001", "func": "001", "rp": "00111", "expected_time": 5},
+      {"opcode": "000001", "func": "001", "rp": "01000", "expected_time": 6},
+      {"opcode": "000001", "func": "001", "rp": "01001", "expected_time": 8},
+      {"opcode": "000001", "func": "011", "rp": "00001", "expected_time": 6},
+      {"opcode": "000001", "func": "011", "rp": "00010", "expected_time": 30},
+      {"opcode": "000001", "func": "011", "rp": "00011", "expected_time": 60},
+      {"opcode": "000001", "func": "011", "rp": "00100", "expected_time": 4},
+      {"opcode": "000001", "func": "100", "rp": "00001", "expected_time": 4},
+      {"opcode": "000001", "func": "100", "rp": "00010", "expected_time": 12},
+      {"opcode": "000001", "func": "100", "rp": "00011", "expected_time": 6},
+      {"opcode": "000001", "func": "100", "rp": "00100", "expected_time": 10},
+      {"opcode": "000001", "func": "100", "rp": "00101", "expected_time": 8},
+      {"opcode": "000001", "func": "100", "rp": "00110", "expected_time": 5},
+      {"opcode": "000001", "func": "100", "rp": "00111", "expected_time": 3},
+      {"opcode": "000001", "func": "100", "rp": "01000", "expected_time": 6}
+    ],
+    "standard_logistics_times": [
+      {"from_type": "memory", "to_type": "register", "time": 12.0},
+      {"from_type": "register", "to_type": "memory", "time": 12.0},
+      {"from_type": "register", "to_type": "register", "time": 6.0},
+      {"from_type": "memory", "to_type": "memory", "time": 0.0}
+    ],
+    "setup_time_model": {
+      "component_families": [
+        {
+          "name": "CPU",
+          "models": ["CPU_1", "CPU_2", "CPU_3", "CPU_4", "CPU_5"],
+          "matrix": [[0, 6, 12, 18, 24], [6, 0, 6, 12, 18], [12, 6, 0, 6, 12], [18, 12, 6, 0, 6], [24, 18, 12, 6, 0]]
+        },
+        {
+          "name": "Motherboard",
+          "models": ["MB_1", "MB_2", "MB_3", "MB_4"],
+          "matrix": [[0, 10, 20, 30], [10, 0, 10, 20], [20, 10, 0, 10], [30, 20, 10, 0]]
+        },
+        {
+          "name": "RAM",
+          "models": ["RAM_1", "RAM_2", "RAM_3", "RAM_4"],
+          "matrix": [[0, 4, 8, 12], [4, 0, 4, 8], [8, 4, 0, 4], [12, 8, 4, 0]]
+        },
+        {
+          "name": "GPU",
+          "models": ["GPU_NONE", "GPU_1", "GPU_2", "GPU_3", "GPU_4"],
+          "matrix": [[0, 8, 16, 24, 32], [8, 0, 8, 16, 24], [16, 8, 0, 8, 16], [24, 16, 8, 0, 8], [32, 24, 16, 8, 0]]
+        },
+        {
+          "name": "Storage",
+          "models": ["SSD_1", "SSD_2", "SSD_3", "SSD_4"],
+          "matrix": [[0, 4, 8, 12], [4, 0, 4, 8], [8, 4, 0, 4], [12, 8, 4, 0]]
+        },
+        {
+          "name": "Cooling",
+          "models": ["COOLING_NONE", "COOLING_1", "COOLING_2"],
+          "matrix": [[0, 4, 8], [4, 0, 4], [8, 4, 0]]
+        }
+      ]
+    }
+  }
+}

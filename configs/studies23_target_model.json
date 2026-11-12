@@ -1,0 +1,908 @@
+{
+  "meta": {
+    "factory_name": "Customized_Garment_Assembly_Line",
+    "version": "1.0",
+    "scenario": "flexible assembly line for customized garment sewing",
+    "domain": "garment_continuation_compact__C_hal_load60_pick4_due250",
+    "production_paradigm": "flexible_assembly_line"
+  },
+  "case_study_model": {
+    "product_customization": {
+      "Fabric": 4,
+      "Style": 3,
+      "Sleeve": 3,
+      "Collar": 3
+    },
+    "arrival_process": {
+      "distribution": "poisson",
+      "loads": [
+        {
+          "name": "low",
+          "mtba": 20.0
+        },
+        {
+          "name": "medium",
+          "mtba": 15.0
+        },
+        {
+          "name": "high",
+          "mtba": 10.0
+        }
+      ],
+      "orders_per_scenario": 0,
+      "replications": 0
+    },
+    "replanning_triggers": [
+      "new_order_arrival",
+      "buffer_blocking_released",
+      "failed_device_repaired",
+      "exception_raised"
+    ]
+  },
+  "instruction_capability_set": {
+    "supported_instructions": [
+      {
+        "opcode": "000001",
+        "func": "001",
+        "name": "PROCESS",
+        "supported_rp": [
+          {
+            "rp": "00001",
+            "description": "Cut_Fabric"
+          },
+          {
+            "rp": "00010",
+            "description": "Cut_Lining"
+          },
+          {
+            "rp": "00011",
+            "description": "Sew_Body"
+          },
+          {
+            "rp": "00100",
+            "description": "Sew_Sleeve"
+          },
+          {
+            "rp": "00101",
+            "description": "Attach_Collar"
+          },
+          {
+            "rp": "00110",
+            "description": "Hem_Finish"
+          },
+          {
+            "rp": "00111",
+            "description": "Press_Finish"
+          },
+          {
+            "rp": "01001",
+            "description": "Fold_Pack"
+          }
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "name": "INSPECT",
+        "supported_rp": [
+          {
+            "rp": "00001",
+            "description": "Stitch_Check"
+          },
+          {
+            "rp": "00010",
+            "description": "Measurement_Check"
+          }
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "name": "ADJUST",
+        "supported_rp": [
+          {
+            "rp": "00001",
+            "description": "Fabric_Replenish"
+          },
+          {
+            "rp": "00010",
+            "description": "Thread_Tension_Adjust"
+          },
+          {
+            "rp": "00011",
+            "description": "Garment_Rework"
+          },
+          {
+            "rp": "00100",
+            "description": "Operator_Reassign"
+          }
+        ]
+      },
+      {
+        "opcode": "100101",
+        "func": "000",
+        "name": "PLOAD",
+        "supported_rp": [
+          {
+            "rp": "00000",
+            "description": "Fabric_Store_To_Table"
+          }
+        ]
+      },
+      {
+        "opcode": "101101",
+        "func": "000",
+        "name": "PSTORE",
+        "supported_rp": [
+          {
+            "rp": "00000",
+            "description": "Finished_Goods_To_Store"
+          }
+        ]
+      }
+    ],
+    "palu_definitions": [
+      {
+        "palu_id": 0,
+        "device_type": "Cutting_Machine",
+        "quantity": 2,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00010"
+          }
+        ]
+      },
+      {
+        "palu_id": 1,
+        "device_type": "Sewing_Machine",
+        "quantity": 3,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00100"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00101"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00110"
+          }
+        ]
+      },
+      {
+        "palu_id": 2,
+        "device_type": "Press_Station",
+        "quantity": 3,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00111"
+          }
+        ]
+      },
+      {
+        "palu_id": 6,
+        "device_type": "Packing_Station",
+        "quantity": 1,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "01001"
+          }
+        ]
+      },
+      {
+        "palu_id": 3,
+        "device_type": "Conveyor_AGV",
+        "quantity": 5,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "010",
+            "rp": "00000"
+          },
+          {
+            "opcode": "100101",
+            "func": "000",
+            "rp": "00000"
+          },
+          {
+            "opcode": "101101",
+            "func": "000",
+            "rp": "00000"
+          }
+        ]
+      },
+      {
+        "palu_id": 4,
+        "device_type": "Quality_Bench",
+        "quantity": 2,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00010"
+          }
+        ]
+      },
+      {
+        "palu_id": 5,
+        "device_type": "Recovery_Operator",
+        "quantity": 1,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00010"
+          },
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00100"
+          }
+        ]
+      }
+    ]
+  },
+  "addressing_model": {
+    "storage_regions": {
+      "memory_ids": [
+        100
+      ],
+      "register_ids": [
+        0,
+        2,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    },
+    "workstation_mapping": [
+      {
+        "workstation_id": 0,
+        "pm_type": "cutting",
+        "assigned_registers": [
+          0
+        ],
+        "assigned_palus": [
+          0,
+          3
+        ]
+      },
+      {
+        "workstation_id": 1,
+        "pm_type": "cutting",
+        "assigned_registers": [
+          2
+        ],
+        "assigned_palus": [
+          0,
+          3
+        ]
+      },
+      {
+        "workstation_id": 3,
+        "pm_type": "sewing",
+        "assigned_registers": [
+          6
+        ],
+        "assigned_palus": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "workstation_id": 4,
+        "pm_type": "sewing",
+        "assigned_registers": [
+          8
+        ],
+        "assigned_palus": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "workstation_id": 5,
+        "pm_type": "sewing",
+        "assigned_registers": [
+          10
+        ],
+        "assigned_palus": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "workstation_id": 6,
+        "pm_type": "inspection",
+        "assigned_registers": [
+          12
+        ],
+        "assigned_palus": [
+          4,
+          3
+        ]
+      },
+      {
+        "workstation_id": 7,
+        "pm_type": "inspection",
+        "assigned_registers": [
+          14
+        ],
+        "assigned_palus": [
+          4,
+          3
+        ]
+      },
+      {
+        "workstation_id": 8,
+        "pm_type": "packing",
+        "assigned_registers": [
+          16
+        ],
+        "assigned_palus": [
+          6,
+          3
+        ]
+      },
+      {
+        "workstation_id": 9,
+        "pm_type": "Recovery_Bay",
+        "assigned_registers": [
+          18
+        ],
+        "assigned_palus": [
+          5,
+          3
+        ]
+      }
+    ]
+  },
+  "storage_model": {
+    "capacity_constraints": [
+      {
+        "storage_id": 0,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 0,
+        "capacity": 12
+      },
+      {
+        "storage_id": 2,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 1,
+        "capacity": 12
+      },
+      {
+        "storage_id": 6,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 3,
+        "capacity": 12
+      },
+      {
+        "storage_id": 8,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 4,
+        "capacity": 12
+      },
+      {
+        "storage_id": 10,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 5,
+        "capacity": 12
+      },
+      {
+        "storage_id": 12,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 6,
+        "capacity": 12
+      },
+      {
+        "storage_id": 14,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 7,
+        "capacity": 12
+      },
+      {
+        "storage_id": 16,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 8,
+        "capacity": 12
+      },
+      {
+        "storage_id": 18,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 9,
+        "capacity": 12
+      },
+      {
+        "storage_id": 100,
+        "type": "memory",
+        "role": "warehouse",
+        "capacity": 5000
+      }
+    ]
+  },
+  "runtime_environment": {
+    "default_catch_deadline": 20.0,
+    "min_catch_deadline": 1.0,
+    "fault_release_latency": 3.0,
+    "catch_triggers": [
+      {
+        "exception_type": "MaterialMissing",
+        "trigger_operations": [
+          {
+            "opcode": "100101",
+            "func": "000",
+            "rp": "00000"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00001"
+          }
+        ]
+      },
+      {
+        "exception_type": "ToolingDeviation",
+        "trigger_operations": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00101"
+          }
+        ]
+      },
+      {
+        "exception_type": "QualityFault",
+        "trigger_operations": [
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00010"
+          }
+        ]
+      },
+      {
+        "exception_type": "MachineFailure",
+        "trigger_operations": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00010"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00100"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00101"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00110"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00111"
+          },
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00001"
+          }
+        ]
+      }
+    ],
+    "exception_codes": {
+      "ResourceFault": 1,
+      "MaterialMissing": 2,
+      "Timeout": 3,
+      "QualityFault": 4,
+      "DeviceOverheat": 5,
+      "MachineFailure": 6,
+      "OperatorUnavailable": 7,
+      "ToolingDeviation": 8,
+      "BufferUnavailable": 9,
+      "LogisticsDepleted": 10
+    }
+  },
+  "scheduling_model": {
+    "logistics_layout": {
+      "warehouse": {
+        "storage_id": 100,
+        "coord": [
+          -1,
+          -1
+        ]
+      },
+      "warehouse_base_time": 6.0,
+      "pm_base_time": 3.0,
+      "distance_factor": 2.0,
+      "same_pm_time": 1.0,
+      "process_modules": [
+        {
+          "workstation_id": 0,
+          "pm_type": "cutting",
+          "coord": [
+            0,
+            0
+          ]
+        },
+        {
+          "workstation_id": 1,
+          "pm_type": "cutting",
+          "coord": [
+            1,
+            0
+          ]
+        },
+        {
+          "workstation_id": 3,
+          "pm_type": "sewing",
+          "coord": [
+            3,
+            0
+          ]
+        },
+        {
+          "workstation_id": 4,
+          "pm_type": "sewing",
+          "coord": [
+            4,
+            0
+          ]
+        },
+        {
+          "workstation_id": 5,
+          "pm_type": "sewing",
+          "coord": [
+            5,
+            0
+          ]
+        },
+        {
+          "workstation_id": 6,
+          "pm_type": "inspection",
+          "coord": [
+            6,
+            0
+          ]
+        },
+        {
+          "workstation_id": 7,
+          "pm_type": "inspection",
+          "coord": [
+            7,
+            0
+          ]
+        },
+        {
+          "workstation_id": 8,
+          "pm_type": "packing",
+          "coord": [
+            8,
+            0
+          ]
+        },
+        {
+          "workstation_id": 9,
+          "pm_type": "Recovery_Bay",
+          "coord": [
+            4,
+            1
+          ]
+        }
+      ]
+    },
+    "processing_times": [
+      {
+        "opcode": "100101",
+        "func": "000",
+        "rp": "00000",
+        "expected_time": 5.0
+      },
+      {
+        "opcode": "101101",
+        "func": "000",
+        "rp": "00000",
+        "expected_time": 5.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00001",
+        "expected_time": 4.5
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00010",
+        "expected_time": 4.5
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00011",
+        "expected_time": 9
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00100",
+        "expected_time": 9
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00101",
+        "expected_time": 9
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00110",
+        "expected_time": 10
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00111",
+        "expected_time": 9
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "01001",
+        "expected_time": 6.0
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "rp": "00001",
+        "expected_time": 6.0
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "rp": "00010",
+        "expected_time": 6.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00001",
+        "expected_time": 7.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00010",
+        "expected_time": 5.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00011",
+        "expected_time": 9.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00100",
+        "expected_time": 12
+      }
+    ],
+    "standard_logistics_times": [
+      {
+        "from_type": "memory",
+        "to_type": "register",
+        "time": 10.0
+      },
+      {
+        "from_type": "register",
+        "to_type": "memory",
+        "time": 10.0
+      },
+      {
+        "from_type": "register",
+        "to_type": "register",
+        "time": 5.0
+      },
+      {
+        "from_type": "memory",
+        "to_type": "memory",
+        "time": 0.0
+      }
+    ],
+    "setup_time_model": {
+      "component_families": [
+        {
+          "name": "Fabric",
+          "models": [
+            "COTTON",
+            "LINEN",
+            "WOOL",
+            "BLEND"
+          ],
+          "matrix": [
+            [
+              0.0,
+              4.0,
+              8.0,
+              12.0
+            ],
+            [
+              4.0,
+              0.0,
+              4.0,
+              8.0
+            ],
+            [
+              8.0,
+              4.0,
+              0.0,
+              4.0
+            ],
+            [
+              12.0,
+              8.0,
+              4.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "Style",
+          "models": [
+            "SLIM",
+            "REGULAR",
+            "LOOSE"
+          ],
+          "matrix": [
+            [
+              0.0,
+              2.0,
+              4.0
+            ],
+            [
+              2.0,
+              0.0,
+              2.0
+            ],
+            [
+              4.0,
+              2.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "Sleeve",
+          "models": [
+            "SLEEVELESS",
+            "SHORT",
+            "LONG"
+          ],
+          "matrix": [
+            [
+              0.0,
+              2.0,
+              4.0
+            ],
+            [
+              2.0,
+              0.0,
+              2.0
+            ],
+            [
+              4.0,
+              2.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "Collar",
+          "models": [
+            "COLLARLESS",
+            "ROUND",
+            "POINTED"
+          ],
+          "matrix": [
+            [
+              0.0,
+              2.0,
+              4.0
+            ],
+            [
+              2.0,
+              0.0,
+              2.0
+            ],
+            [
+              4.0,
+              2.0,
+              0.0
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

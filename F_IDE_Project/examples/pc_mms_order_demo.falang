@@ -1,0 +1,58 @@
+// Example for the Customized_PC_Assembly_MMS target model.
+
+Resource Assembly_PM: Device<Process, Adjust>;
+Resource Test_PM: Device<Inspect, Adjust>;
+Resource Packaging_PM: Device<Process, Inspect>;
+Resource Recovery_PM: Device<Adjust>;
+
+Storage Warehouse: Memory<>;
+Material PC_Order[1];
+
+Task AssemblePC(Material pc) {
+    try {
+        Load(pc, "Warehouse_To_PM_Buffer");
+        Process(Assembly_PM, pc, "Base_Assembly;component=Motherboard;model=MB_2");
+        Process(Assembly_PM, pc, "CPU_Install;component=CPU;model=CPU_3");
+        Process(Assembly_PM, pc, "Memory_Install;component=RAM;model=RAM_2");
+        Process(Assembly_PM, pc, "Storage_Install;component=Storage;model=SSD_1");
+        Process(Assembly_PM, pc, "GPU_Install;component=GPU;model=GPU_2");
+        Process(Assembly_PM, pc, "Cooling_Install;component=Cooling;model=COOLING_1");
+        Process(Assembly_PM, pc, "Power_Install");
+        Process(Assembly_PM, pc, "Case_Assembly");
+    }
+    catch(MaterialMissing) {
+        Adjust(Recovery_PM, "MaterialMissing_Recovery");
+        Move(pc, "Matrix_Buffer_Move");
+    }
+    compensate {
+        Adjust(Recovery_PM, "OperatorUnavailable_Reassign");
+    }
+
+    return pc;
+}
+
+Task TestAndPackage(Material pc) {
+    try {
+        Inspect(Test_PM, pc, "Power_On_Test");
+        Inspect(Test_PM, pc, "Benchmark_Test");
+        Inspect(Test_PM, pc, "Thermal_Test");
+        Inspect(Packaging_PM, pc, "Accessory_Check");
+        Process(Packaging_PM, pc, "Packaging");
+        Store(pc, "PM_Buffer_To_Warehouse");
+    }
+    catch(MachineFailure) {
+        Adjust(Recovery_PM, "MachineFailure_Reset");
+        Move(pc, "Matrix_Buffer_Move");
+    }
+    compensate {
+        Adjust(Recovery_PM, "QualityFault_Rework");
+    }
+
+    return pc;
+}
+
+Task Main(Material PC_Order) {
+    assembled = AssemblePC(PC_Order);
+    finished = TestAndPackage(assembled);
+    return finished;
+}

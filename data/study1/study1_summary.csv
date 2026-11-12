@@ -1,0 +1,10 @@
+domain,ft_state,seeds,orders_per_seed,compiled_programs,realization_success,immediate_placement,compile_failures,memory_spills,grammar_modification,compiler_core_modification,source_modification_across_Ft
+pc_assembly,normal,50,50,2500,1.0,1.0,0,0,0,0,0
+pc_assembly,high_occupancy,50,50,2500,1.0,0.849116,0,0,0,0,0
+pc_assembly,machine_unavailable,50,50,2500,1.0,0.849116,0,0,0,0,0
+garment,normal,50,50,2500,1.0,1.0,0,0,0,0,0
+garment,high_occupancy,50,50,2500,1.0,0.832382,0,0,0,0,0
+garment,machine_unavailable,50,50,2500,1.0,0.92847,0,0,0,0,0
+cnc_machining,normal,50,50,2500,1.0,1.0,0,0,0,0,0
+cnc_machining,high_occupancy,50,50,2500,1.0,0.893456,0,0,0,0,0
+cnc_machining,machine_unavailable,50,50,2500,1.0,0.898936,0,0,0,0,0

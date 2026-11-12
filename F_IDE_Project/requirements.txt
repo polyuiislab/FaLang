@@ -1,0 +1,4 @@
+# Core compilation, simulation, and tests use the Python standard library.
+# The IDE requires Tkinter / Tcl/Tk.
+# Graphviz dot is optional for CFG/MDG export; install it separately and add it to PATH.
+# Plotting and packaging dependencies are listed in requirements-optional.txt.

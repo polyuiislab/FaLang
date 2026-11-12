@@ -1,0 +1,962 @@
+{
+  "meta": {
+    "factory_name": "Customized_CNC_Job_Shop",
+    "version": "1.0",
+    "scenario": "flexible job shop for customized CNC machining",
+    "domain": "cnc_machining",
+    "production_paradigm": "flexible_job_shop"
+  },
+  "case_study_model": {
+    "product_customization": {
+      "Material": 4,
+      "Feature": 3,
+      "Tolerance": 3,
+      "Coating": 3
+    },
+    "arrival_process": {
+      "distribution": "poisson",
+      "loads": [
+        {
+          "name": "low",
+          "mtba": 26.0
+        },
+        {
+          "name": "medium",
+          "mtba": 20.0
+        },
+        {
+          "name": "high",
+          "mtba": 13.0
+        }
+      ],
+      "orders_per_scenario": 0,
+      "replications": 0
+    },
+    "replanning_triggers": [
+      "new_order_arrival",
+      "buffer_blocking_released",
+      "failed_device_repaired",
+      "exception_raised"
+    ]
+  },
+  "instruction_capability_set": {
+    "supported_instructions": [
+      {
+        "opcode": "000001",
+        "func": "001",
+        "name": "PROCESS",
+        "supported_rp": [
+          {
+            "rp": "00001",
+            "description": "Face_Mill"
+          },
+          {
+            "rp": "00010",
+            "description": "Drill_Holes"
+          },
+          {
+            "rp": "00011",
+            "description": "Pocket_Mill"
+          },
+          {
+            "rp": "00100",
+            "description": "Deburr"
+          },
+          {
+            "rp": "00101",
+            "description": "Surface_Treat"
+          },
+          {
+            "rp": "00110",
+            "description": "Pack_Part"
+          }
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "name": "INSPECT",
+        "supported_rp": [
+          {
+            "rp": "00001",
+            "description": "CMM_Inspect"
+          },
+          {
+            "rp": "00010",
+            "description": "Surface_Check"
+          }
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "name": "ADJUST",
+        "supported_rp": [
+          {
+            "rp": "00001",
+            "description": "Stock_Replenish"
+          },
+          {
+            "rp": "00010",
+            "description": "Tool_Offset_Adjust"
+          },
+          {
+            "rp": "00011",
+            "description": "Fixture_Reclamp"
+          },
+          {
+            "rp": "00100",
+            "description": "Rework_Cut"
+          },
+          {
+            "rp": "00101",
+            "description": "Operator_Reassign"
+          }
+        ]
+      },
+      {
+        "opcode": "100101",
+        "func": "000",
+        "name": "PLOAD",
+        "supported_rp": [
+          {
+            "rp": "00000",
+            "description": "Stock_Store_To_Machine"
+          }
+        ]
+      },
+      {
+        "opcode": "101101",
+        "func": "000",
+        "name": "PSTORE",
+        "supported_rp": [
+          {
+            "rp": "00000",
+            "description": "Finished_Part_To_Store"
+          }
+        ]
+      }
+    ],
+    "palu_definitions": [
+      {
+        "palu_id": 0,
+        "device_type": "CNC_Mill",
+        "quantity": 3,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00010"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00100"
+          }
+        ]
+      },
+      {
+        "palu_id": 1,
+        "device_type": "CNC_Lathe",
+        "quantity": 2,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00100"
+          }
+        ]
+      },
+      {
+        "palu_id": 2,
+        "device_type": "Finishing_Booth",
+        "quantity": 1,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00101"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00110"
+          }
+        ]
+      },
+      {
+        "palu_id": 3,
+        "device_type": "Transfer_AGV",
+        "quantity": 4,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "010",
+            "rp": "00000"
+          },
+          {
+            "opcode": "100101",
+            "func": "000",
+            "rp": "00000"
+          },
+          {
+            "opcode": "101101",
+            "func": "000",
+            "rp": "00000"
+          }
+        ]
+      },
+      {
+        "palu_id": 4,
+        "device_type": "CMM_Station",
+        "quantity": 2,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00010"
+          }
+        ]
+      },
+      {
+        "palu_id": 5,
+        "device_type": "Setup_Technician",
+        "quantity": 2,
+        "supported_capabilities": [
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00010"
+          },
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00100"
+          },
+          {
+            "opcode": "000001",
+            "func": "100",
+            "rp": "00101"
+          }
+        ]
+      }
+    ]
+  },
+  "addressing_model": {
+    "storage_regions": {
+      "memory_ids": [
+        100
+      ],
+      "register_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    "workstation_mapping": [
+      {
+        "workstation_id": 0,
+        "pm_type": "milling",
+        "assigned_registers": [
+          0,
+          1
+        ],
+        "assigned_palus": [
+          0,
+          3
+        ]
+      },
+      {
+        "workstation_id": 1,
+        "pm_type": "milling",
+        "assigned_registers": [
+          2,
+          3
+        ],
+        "assigned_palus": [
+          0,
+          3
+        ]
+      },
+      {
+        "workstation_id": 2,
+        "pm_type": "milling",
+        "assigned_registers": [
+          4,
+          5
+        ],
+        "assigned_palus": [
+          0,
+          3
+        ]
+      },
+      {
+        "workstation_id": 3,
+        "pm_type": "milling",
+        "assigned_registers": [
+          6,
+          7
+        ],
+        "assigned_palus": [
+          0,
+          5
+        ]
+      },
+      {
+        "workstation_id": 4,
+        "pm_type": "turning",
+        "assigned_registers": [
+          8,
+          9
+        ],
+        "assigned_palus": [
+          1,
+          3
+        ]
+      },
+      {
+        "workstation_id": 5,
+        "pm_type": "turning",
+        "assigned_registers": [
+          10,
+          11
+        ],
+        "assigned_palus": [
+          1,
+          5
+        ]
+      },
+      {
+        "workstation_id": 6,
+        "pm_type": "finishing",
+        "assigned_registers": [
+          12,
+          13
+        ],
+        "assigned_palus": [
+          2,
+          3,
+          5
+        ]
+      },
+      {
+        "workstation_id": 7,
+        "pm_type": "finishing",
+        "assigned_registers": [
+          14,
+          15
+        ],
+        "assigned_palus": [
+          2,
+          3,
+          5
+        ]
+      },
+      {
+        "workstation_id": 8,
+        "pm_type": "inspection",
+        "assigned_registers": [
+          16,
+          17
+        ],
+        "assigned_palus": [
+          4,
+          3,
+          5
+        ]
+      }
+    ]
+  },
+  "storage_model": {
+    "capacity_constraints": [
+      {
+        "storage_id": 0,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 0,
+        "capacity": 2
+      },
+      {
+        "storage_id": 1,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 0,
+        "capacity": 2
+      },
+      {
+        "storage_id": 2,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 1,
+        "capacity": 2
+      },
+      {
+        "storage_id": 3,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 1,
+        "capacity": 2
+      },
+      {
+        "storage_id": 4,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 2,
+        "capacity": 2
+      },
+      {
+        "storage_id": 5,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 2,
+        "capacity": 2
+      },
+      {
+        "storage_id": 6,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 3,
+        "capacity": 2
+      },
+      {
+        "storage_id": 7,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 3,
+        "capacity": 2
+      },
+      {
+        "storage_id": 8,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 4,
+        "capacity": 2
+      },
+      {
+        "storage_id": 9,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 4,
+        "capacity": 2
+      },
+      {
+        "storage_id": 10,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 5,
+        "capacity": 2
+      },
+      {
+        "storage_id": 11,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 5,
+        "capacity": 2
+      },
+      {
+        "storage_id": 12,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 6,
+        "capacity": 2
+      },
+      {
+        "storage_id": 13,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 6,
+        "capacity": 2
+      },
+      {
+        "storage_id": 14,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 7,
+        "capacity": 2
+      },
+      {
+        "storage_id": 15,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 7,
+        "capacity": 2
+      },
+      {
+        "storage_id": 16,
+        "type": "register",
+        "role": "line_side_buffer",
+        "workstation_id": 8,
+        "capacity": 2
+      },
+      {
+        "storage_id": 17,
+        "type": "register",
+        "role": "unloading_buffer",
+        "workstation_id": 8,
+        "capacity": 2
+      },
+      {
+        "storage_id": 100,
+        "type": "memory",
+        "role": "warehouse",
+        "capacity": 5000
+      }
+    ]
+  },
+  "runtime_environment": {
+    "default_catch_deadline": 20.0,
+    "min_catch_deadline": 1.0,
+    "fault_release_latency": 3.0,
+    "catch_triggers": [
+      {
+        "exception_type": "MaterialMissing",
+        "trigger_operations": [
+          {
+            "opcode": "100101",
+            "func": "000",
+            "rp": "00000"
+          }
+        ]
+      },
+      {
+        "exception_type": "ToolingDeviation",
+        "trigger_operations": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00010"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00100"
+          }
+        ]
+      },
+      {
+        "exception_type": "MachineFailure",
+        "trigger_operations": [
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00010"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00011"
+          },
+          {
+            "opcode": "000001",
+            "func": "001",
+            "rp": "00101"
+          },
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00001"
+          }
+        ]
+      },
+      {
+        "exception_type": "QualityFault",
+        "trigger_operations": [
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00001"
+          },
+          {
+            "opcode": "000001",
+            "func": "011",
+            "rp": "00010"
+          }
+        ]
+      }
+    ],
+    "exception_codes": {
+      "ResourceFault": 1,
+      "MaterialMissing": 2,
+      "Timeout": 3,
+      "QualityFault": 4,
+      "DeviceOverheat": 5,
+      "MachineFailure": 6,
+      "OperatorUnavailable": 7,
+      "ToolingDeviation": 8,
+      "BufferUnavailable": 9,
+      "LogisticsDepleted": 10
+    }
+  },
+  "scheduling_model": {
+    "logistics_layout": {
+      "warehouse": {
+        "storage_id": 100,
+        "coord": [
+          -1,
+          -1
+        ]
+      },
+      "warehouse_base_time": 6.0,
+      "pm_base_time": 3.0,
+      "distance_factor": 2.0,
+      "same_pm_time": 1.0,
+      "process_modules": [
+        {
+          "workstation_id": 0,
+          "pm_type": "milling",
+          "coord": [
+            0,
+            0
+          ]
+        },
+        {
+          "workstation_id": 1,
+          "pm_type": "milling",
+          "coord": [
+            0,
+            1
+          ]
+        },
+        {
+          "workstation_id": 2,
+          "pm_type": "milling",
+          "coord": [
+            0,
+            2
+          ]
+        },
+        {
+          "workstation_id": 3,
+          "pm_type": "milling",
+          "coord": [
+            1,
+            0
+          ]
+        },
+        {
+          "workstation_id": 4,
+          "pm_type": "turning",
+          "coord": [
+            1,
+            1
+          ]
+        },
+        {
+          "workstation_id": 5,
+          "pm_type": "turning",
+          "coord": [
+            1,
+            2
+          ]
+        },
+        {
+          "workstation_id": 6,
+          "pm_type": "finishing",
+          "coord": [
+            2,
+            0
+          ]
+        },
+        {
+          "workstation_id": 7,
+          "pm_type": "finishing",
+          "coord": [
+            2,
+            1
+          ]
+        },
+        {
+          "workstation_id": 8,
+          "pm_type": "inspection",
+          "coord": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    "processing_times": [
+      {
+        "opcode": "100101",
+        "func": "000",
+        "rp": "00000",
+        "expected_time": 7.0
+      },
+      {
+        "opcode": "101101",
+        "func": "000",
+        "rp": "00000",
+        "expected_time": 7.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00001",
+        "expected_time": 14.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00010",
+        "expected_time": 11.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00011",
+        "expected_time": 18.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00100",
+        "expected_time": 6.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00101",
+        "expected_time": 12.0
+      },
+      {
+        "opcode": "000001",
+        "func": "001",
+        "rp": "00110",
+        "expected_time": 5.0
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "rp": "00001",
+        "expected_time": 10.0
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "rp": "00010",
+        "expected_time": 6.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00001",
+        "expected_time": 9.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00010",
+        "expected_time": 6.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00011",
+        "expected_time": 5.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00100",
+        "expected_time": 12.0
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "rp": "00101",
+        "expected_time": 4.0
+      }
+    ],
+    "standard_logistics_times": [
+      {
+        "from_type": "memory",
+        "to_type": "register",
+        "time": 10.0
+      },
+      {
+        "from_type": "register",
+        "to_type": "memory",
+        "time": 10.0
+      },
+      {
+        "from_type": "register",
+        "to_type": "register",
+        "time": 5.0
+      },
+      {
+        "from_type": "memory",
+        "to_type": "memory",
+        "time": 0.0
+      }
+    ],
+    "setup_time_model": {
+      "component_families": [
+        {
+          "name": "Material",
+          "models": [
+            "AL6061",
+            "AL7075",
+            "STEEL_1045",
+            "BRASS"
+          ],
+          "matrix": [
+            [
+              0.0,
+              6.0,
+              12.0,
+              18.0
+            ],
+            [
+              6.0,
+              0.0,
+              6.0,
+              12.0
+            ],
+            [
+              12.0,
+              6.0,
+              0.0,
+              6.0
+            ],
+            [
+              18.0,
+              12.0,
+              6.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "Feature",
+          "models": [
+            "PLAIN",
+            "HOLES",
+            "POCKET"
+          ],
+          "matrix": [
+            [
+              0.0,
+              4.0,
+              8.0
+            ],
+            [
+              4.0,
+              0.0,
+              4.0
+            ],
+            [
+              8.0,
+              4.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "Tolerance",
+          "models": [
+            "COARSE",
+            "MEDIUM",
+            "FINE"
+          ],
+          "matrix": [
+            [
+              0.0,
+              3.0,
+              6.0
+            ],
+            [
+              3.0,
+              0.0,
+              3.0
+            ],
+            [
+              6.0,
+              3.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "Coating",
+          "models": [
+            "COATING_NONE",
+            "ANODIZED",
+            "NICKEL"
+          ],
+          "matrix": [
+            [
+              0.0,
+              5.0,
+              10.0
+            ],
+            [
+              5.0,
+              0.0,
+              5.0
+            ],
+            [
+              10.0,
+              5.0,
+              0.0
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

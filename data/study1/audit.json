@@ -1,0 +1,7 @@
+{
+  "records": 450,
+  "checks_passed": true,
+  "distinct_domain_seed_orders": 7500,
+  "compiled_programs_across_states": 22500,
+  "elapsed_s": 42.09355940000387
+}

@@ -1,0 +1,201 @@
+study,seed,orders,method,method_label,makespan,on_time_delivery_rate,mean_tardiness,resource_utilization,waiting_time,transport_time
+study2,182000,50,graph_coloring,RGC,1027.72,0.64,40.79,0.3298,4222.49,967.25
+study2,182001,50,graph_coloring,RGC,1000.55,0.7,56.23,0.3383,4123.14,965.5
+study2,182002,50,graph_coloring,RGC,1011.8,0.72,43.61,0.3378,4013.69,974.0
+study2,182003,50,graph_coloring,RGC,953.02,0.76,33.94,0.346,3639.66,941.5
+study2,182004,50,graph_coloring,RGC,1085.65,0.76,45.19,0.3135,4263.63,992.75
+study2,182005,50,graph_coloring,RGC,991.71,0.84,26.41,0.342,3741.76,958.25
+study2,182006,50,graph_coloring,RGC,1035.97,0.7,62.28,0.3263,4205.09,951.75
+study2,182007,50,graph_coloring,RGC,1000.34,0.68,41.73,0.3373,3974.58,963.5
+study2,182008,50,graph_coloring,RGC,1024.94,0.7,56.75,0.3332,4190.56,987.75
+study2,182009,50,graph_coloring,RGC,1046.19,0.72,59.65,0.3288,4300.74,975.5
+study2,182010,50,graph_coloring,RGC,983.91,0.76,40.5,0.3375,3868.11,947.0
+study2,182011,50,graph_coloring,RGC,1003.28,0.7,62.3,0.3324,4152.41,965.0
+study2,182012,50,graph_coloring,RGC,1032.73,0.7,66.77,0.333,4288.18,980.25
+study2,182013,50,graph_coloring,RGC,1036.1,0.68,58.43,0.3224,4177.52,960.5
+study2,182014,50,graph_coloring,RGC,993.35,0.7,58.35,0.338,3951.85,983.25
+study2,182015,50,graph_coloring,RGC,1047.61,0.66,51.49,0.325,4240.03,947.75
+study2,182016,50,graph_coloring,RGC,1032.76,0.66,61.35,0.3249,4218.72,962.25
+study2,182017,50,graph_coloring,RGC,983.4,0.72,31.94,0.3399,3810.85,937.0
+study2,182018,50,graph_coloring,RGC,1052.72,0.64,65.46,0.3203,4456.32,949.5
+study2,182019,50,graph_coloring,RGC,1032.22,0.64,69.34,0.3276,4335.95,974.5
+study2,182020,50,graph_coloring,RGC,999.43,0.74,59.41,0.339,3991.02,968.0
+study2,182021,50,graph_coloring,RGC,996.16,0.68,48.84,0.3379,4129.61,972.0
+study2,182022,50,graph_coloring,RGC,1061.52,0.7,53.41,0.3184,4252.24,948.5
+study2,182023,50,graph_coloring,RGC,1032.9,0.7,53.58,0.3252,4094.01,982.25
+study2,182024,50,graph_coloring,RGC,1061.69,0.7,60.69,0.3194,4487.84,954.0
+study2,182025,50,graph_coloring,RGC,1059.94,0.64,72.79,0.3283,4566.7,958.0
+study2,182026,50,graph_coloring,RGC,997.61,0.78,36.44,0.3345,3890.36,968.0
+study2,182027,50,graph_coloring,RGC,1075.43,0.66,72.68,0.3147,4479.44,979.5
+study2,182028,50,graph_coloring,RGC,996.65,0.74,46.1,0.3334,3909.0,991.25
+study2,182029,50,graph_coloring,RGC,1063.22,0.6,54.46,0.3206,4597.6,961.0
+study2,182030,50,graph_coloring,RGC,1004.65,0.72,39.84,0.3342,3856.09,975.25
+study2,182031,50,graph_coloring,RGC,1036.66,0.68,78.79,0.3294,4278.08,986.25
+study2,182032,50,graph_coloring,RGC,1029.08,0.72,48.72,0.3334,4076.27,941.0
+study2,182033,50,graph_coloring,RGC,1061.62,0.6,61.32,0.3266,4502.87,981.0
+study2,182034,50,graph_coloring,RGC,1067.26,0.66,63.86,0.3187,4468.1,970.0
+study2,182035,50,graph_coloring,RGC,1055.11,0.74,46.34,0.3206,4063.76,977.75
+study2,182036,50,graph_coloring,RGC,983.97,0.74,34.25,0.3441,3692.81,954.0
+study2,182037,50,graph_coloring,RGC,1065.45,0.7,68.39,0.3217,4575.65,959.75
+study2,182038,50,graph_coloring,RGC,958.42,0.76,38.71,0.3498,3641.66,961.25
+study2,182039,50,graph_coloring,RGC,1021.63,0.68,55.35,0.329,4012.18,963.5
+study2,182040,50,graph_coloring,RGC,1002.05,0.74,49.66,0.3357,4114.55,980.25
+study2,182041,50,graph_coloring,RGC,958.95,0.74,45.21,0.3452,3706.31,951.5
+study2,182042,50,graph_coloring,RGC,1062.03,0.66,71.85,0.317,4510.83,982.0
+study2,182043,50,graph_coloring,RGC,1009.28,0.7,45.52,0.3327,4016.23,955.75
+study2,182044,50,graph_coloring,RGC,989.14,0.68,52.59,0.3365,3888.63,964.25
+study2,182045,50,graph_coloring,RGC,979.48,0.72,53.2,0.3409,3888.34,961.25
+study2,182046,50,graph_coloring,RGC,1079.92,0.66,70.07,0.3183,4472.46,977.25
+study2,182047,50,graph_coloring,RGC,1059.82,0.64,60.87,0.3198,4458.04,978.5
+study2,182048,50,graph_coloring,RGC,1060.0,0.68,62.67,0.3271,4434.96,954.0
+study2,182049,50,graph_coloring,RGC,944.32,0.76,35.83,0.3542,3475.37,970.5
+study2,182000,50,first_fit,First-fit,1190.88,0.58,95.77,0.2909,5344.0,1031.5
+study2,182001,50,first_fit,First-fit,1150.81,0.62,100.95,0.3034,5165.17,1068.75
+study2,182002,50,first_fit,First-fit,1223.31,0.62,99.98,0.2911,5464.15,1081.0
+study2,182003,50,first_fit,First-fit,1218.52,0.58,103.54,0.2871,5489.98,1069.25
+study2,182004,50,first_fit,First-fit,1181.22,0.66,78.84,0.2973,5146.15,1076.25
+study2,182005,50,first_fit,First-fit,1188.65,0.58,73.76,0.2997,5252.77,1033.25
+study2,182006,50,first_fit,First-fit,1216.14,0.58,99.85,0.2885,5226.74,1029.5
+study2,182007,50,first_fit,First-fit,1228.3,0.58,113.7,0.2852,5744.48,1026.75
+study2,182008,50,first_fit,First-fit,1158.97,0.6,90.14,0.2994,5265.69,1039.0
+study2,182009,50,first_fit,First-fit,1153.33,0.64,88.61,0.2998,5143.15,1070.75
+study2,182010,50,first_fit,First-fit,1224.13,0.58,109.74,0.2879,5582.27,1037.5
+study2,182011,50,first_fit,First-fit,1209.82,0.56,130.84,0.2905,5713.59,1025.0
+study2,182012,50,first_fit,First-fit,1221.33,0.62,116.49,0.291,5701.24,1043.25
+study2,182013,50,first_fit,First-fit,1261.14,0.54,133.29,0.2792,5827.92,1048.5
+study2,182014,50,first_fit,First-fit,1194.48,0.6,114.43,0.2924,5425.06,1086.5
+study2,182015,50,first_fit,First-fit,1169.59,0.62,92.54,0.296,5200.83,1020.5
+study2,182016,50,first_fit,First-fit,1283.48,0.56,128.95,0.28,5925.46,1100.0
+study2,182017,50,first_fit,First-fit,1209.45,0.58,97.28,0.2962,5624.83,1004.25
+study2,182018,50,first_fit,First-fit,1226.15,0.58,115.89,0.2868,5539.72,1020.5
+study2,182019,50,first_fit,First-fit,1119.39,0.62,98.81,0.3091,5071.76,1098.25
+study2,182020,50,first_fit,First-fit,1142.26,0.62,99.91,0.3056,5166.04,1013.75
+study2,182021,50,first_fit,First-fit,1298.08,0.64,134.1,0.2803,6255.86,1122.25
+study2,182022,50,first_fit,First-fit,1211.51,0.56,109.16,0.2901,5604.43,1045.5
+study2,182023,50,first_fit,First-fit,1193.67,0.6,110.24,0.2917,5392.57,1036.25
+study2,182024,50,first_fit,First-fit,1207.01,0.6,101.43,0.2933,5435.17,1029.25
+study2,182025,50,first_fit,First-fit,1236.45,0.58,134.29,0.2894,5936.71,1057.75
+study2,182026,50,first_fit,First-fit,1163.43,0.58,81.33,0.2894,5092.9,983.25
+study2,182027,50,first_fit,First-fit,1202.95,0.6,115.14,0.2949,5483.76,1032.0
+study2,182028,50,first_fit,First-fit,1125.87,0.66,95.33,0.3009,5192.35,1021.5
+study2,182029,50,first_fit,First-fit,1282.99,0.54,114.64,0.2768,6068.86,1114.5
+study2,182030,50,first_fit,First-fit,1237.28,0.56,119.89,0.2806,5901.04,1029.0
+study2,182031,50,first_fit,First-fit,1146.24,0.58,116.36,0.3032,5140.91,1015.0
+study2,182032,50,first_fit,First-fit,1212.6,0.56,115.16,0.2951,5624.89,1016.0
+study2,182033,50,first_fit,First-fit,1209.06,0.5,108.71,0.2947,5518.7,1121.5
+study2,182034,50,first_fit,First-fit,1184.24,0.6,97.16,0.2976,5299.77,1026.75
+study2,182035,50,first_fit,First-fit,1186.17,0.56,96.94,0.2929,5310.19,1053.0
+study2,182036,50,first_fit,First-fit,1201.56,0.64,88.23,0.2897,5318.13,1045.25
+study2,182037,50,first_fit,First-fit,1220.91,0.62,119.0,0.2935,5680.57,1057.0
+study2,182038,50,first_fit,First-fit,1220.89,0.62,100.18,0.2832,5280.34,1050.5
+study2,182039,50,first_fit,First-fit,1174.69,0.62,104.28,0.2938,5211.12,1024.25
+study2,182040,50,first_fit,First-fit,1288.36,0.58,101.34,0.2727,5676.31,1030.75
+study2,182041,50,first_fit,First-fit,1213.51,0.62,111.85,0.296,5547.96,1034.0
+study2,182042,50,first_fit,First-fit,1206.95,0.58,112.75,0.2938,5524.3,1056.5
+study2,182043,50,first_fit,First-fit,1174.82,0.6,99.32,0.2981,5267.5,1079.5
+study2,182044,50,first_fit,First-fit,1197.63,0.58,112.94,0.2964,5449.66,1074.25
+study2,182045,50,first_fit,First-fit,1192.57,0.62,107.36,0.2944,5315.57,1031.75
+study2,182046,50,first_fit,First-fit,1145.14,0.56,101.24,0.2993,5107.06,1013.5
+study2,182047,50,first_fit,First-fit,1176.66,0.54,97.22,0.2951,5235.14,1020.0
+study2,182048,50,first_fit,First-fit,1242.29,0.54,114.57,0.288,5844.38,1043.75
+study2,182049,50,first_fit,First-fit,1182.09,0.6,103.09,0.2909,5348.46,1019.5
+study2,182000,50,machine_transport_joint,Transfer priority,1203.1,0.6,91.91,0.2863,5372.98,958.0
+study2,182001,50,machine_transport_joint,Transfer priority,1143.56,0.64,93.13,0.307,4909.58,943.5
+study2,182002,50,machine_transport_joint,Transfer priority,1183.75,0.62,85.32,0.2934,5204.75,966.0
+study2,182003,50,machine_transport_joint,Transfer priority,1040.0,0.64,63.19,0.3206,4434.88,960.75
+study2,182004,50,machine_transport_joint,Transfer priority,1167.55,0.6,74.61,0.2945,4931.21,983.5
+study2,182005,50,machine_transport_joint,Transfer priority,1161.94,0.66,58.23,0.2965,4937.74,962.0
+study2,182006,50,machine_transport_joint,Transfer priority,1187.4,0.62,93.44,0.2908,5053.92,973.25
+study2,182007,50,machine_transport_joint,Transfer priority,1104.6,0.64,70.35,0.3038,4823.42,966.75
+study2,182008,50,machine_transport_joint,Transfer priority,1066.7,0.68,69.61,0.3197,4629.52,948.75
+study2,182009,50,machine_transport_joint,Transfer priority,1216.75,0.64,103.8,0.2908,5740.45,1001.5
+study2,182010,50,machine_transport_joint,Transfer priority,1181.5,0.6,88.16,0.2866,5094.93,961.75
+study2,182011,50,machine_transport_joint,Transfer priority,1095.19,0.6,92.47,0.31,4946.84,943.25
+study2,182012,50,machine_transport_joint,Transfer priority,1111.71,0.7,82.96,0.3095,4801.03,950.5
+study2,182013,50,machine_transport_joint,Transfer priority,1165.19,0.62,82.82,0.2977,4917.88,967.75
+study2,182014,50,machine_transport_joint,Transfer priority,1050.91,0.68,78.44,0.3184,4529.83,965.5
+study2,182015,50,machine_transport_joint,Transfer priority,1077.04,0.62,64.53,0.3112,4627.26,959.75
+study2,182016,50,machine_transport_joint,Transfer priority,1103.06,0.58,86.98,0.3128,4749.78,969.5
+study2,182017,50,machine_transport_joint,Transfer priority,1020.49,0.7,39.75,0.3302,4069.01,948.0
+study2,182018,50,machine_transport_joint,Transfer priority,1212.53,0.58,111.33,0.2894,5586.66,979.75
+study2,182019,50,machine_transport_joint,Transfer priority,1060.31,0.64,68.98,0.3169,4374.16,952.75
+study2,182020,50,machine_transport_joint,Transfer priority,1114.43,0.66,85.98,0.3088,4805.34,970.0
+study2,182021,50,machine_transport_joint,Transfer priority,1156.25,0.64,100.22,0.3009,5328.61,975.0
+study2,182022,50,machine_transport_joint,Transfer priority,1105.41,0.7,58.23,0.3101,4358.17,951.0
+study2,182023,50,machine_transport_joint,Transfer priority,1096.79,0.66,84.24,0.3074,4824.29,951.0
+study2,182024,50,machine_transport_joint,Transfer priority,1091.25,0.66,68.32,0.3166,4724.07,945.75
+study2,182025,50,machine_transport_joint,Transfer priority,1128.75,0.62,87.29,0.3078,4935.43,949.0
+study2,182026,50,machine_transport_joint,Transfer priority,1137.23,0.58,75.82,0.2922,5010.41,973.25
+study2,182027,50,machine_transport_joint,Transfer priority,1108.6,0.64,88.29,0.306,4710.82,968.75
+study2,182028,50,machine_transport_joint,Transfer priority,1133.7,0.72,80.57,0.2993,4856.76,969.5
+study2,182029,50,machine_transport_joint,Transfer priority,1156.78,0.56,85.33,0.3017,5276.57,967.0
+study2,182030,50,machine_transport_joint,Transfer priority,1206.38,0.6,96.82,0.2857,5475.17,974.0
+study2,182031,50,machine_transport_joint,Transfer priority,1125.98,0.64,106.57,0.3036,5018.06,955.25
+study2,182032,50,machine_transport_joint,Transfer priority,1128.29,0.6,83.67,0.3085,5135.24,973.25
+study2,182033,50,machine_transport_joint,Transfer priority,1182.72,0.5,100.88,0.2966,5403.93,1006.25
+study2,182034,50,machine_transport_joint,Transfer priority,1088.3,0.66,73.51,0.3116,4599.73,953.75
+study2,182035,50,machine_transport_joint,Transfer priority,1167.25,0.56,95.26,0.2975,5247.85,968.5
+study2,182036,50,machine_transport_joint,Transfer priority,1135.56,0.6,85.96,0.3019,5175.34,978.25
+study2,182037,50,machine_transport_joint,Transfer priority,1168.72,0.64,103.52,0.3022,5341.85,966.75
+study2,182038,50,machine_transport_joint,Transfer priority,1124.39,0.66,86.69,0.3026,4975.64,934.0
+study2,182039,50,machine_transport_joint,Transfer priority,1133.32,0.62,89.56,0.3027,4803.55,958.25
+study2,182040,50,machine_transport_joint,Transfer priority,1189.32,0.58,90.59,0.2957,5295.77,974.75
+study2,182041,50,machine_transport_joint,Transfer priority,1150.22,0.62,91.82,0.3033,4988.04,971.0
+study2,182042,50,machine_transport_joint,Transfer priority,1108.73,0.64,81.25,0.3086,4841.77,951.25
+study2,182043,50,machine_transport_joint,Transfer priority,1135.59,0.62,82.12,0.3067,4878.38,969.0
+study2,182044,50,machine_transport_joint,Transfer priority,1151.87,0.6,100.77,0.2997,5052.11,951.0
+study2,182045,50,machine_transport_joint,Transfer priority,1073.19,0.68,75.98,0.3154,4577.26,960.0
+study2,182046,50,machine_transport_joint,Transfer priority,1061.8,0.66,71.89,0.3176,4376.07,963.75
+study2,182047,50,machine_transport_joint,Transfer priority,1195.08,0.56,94.25,0.2878,5170.51,981.25
+study2,182048,50,machine_transport_joint,Transfer priority,1181.15,0.56,98.22,0.2939,5405.04,962.25
+study2,182049,50,machine_transport_joint,Transfer priority,1128.23,0.64,81.93,0.3015,4873.88,946.5
+study2,182000,50,load_balance,Load priority,1101.09,0.7,57.95,0.3154,4490.81,1249.5
+study2,182001,50,load_balance,Load priority,1128.13,0.66,84.3,0.3072,4795.89,1114.5
+study2,182002,50,load_balance,Load priority,1069.25,0.68,58.5,0.3219,4474.89,1176.25
+study2,182003,50,load_balance,Load priority,1157.07,0.62,77.47,0.2938,4671.48,1311.25
+study2,182004,50,load_balance,Load priority,1133.08,0.66,72.84,0.307,4967.65,1151.5
+study2,182005,50,load_balance,Load priority,1073.16,0.68,47.53,0.3209,4445.02,1150.25
+study2,182006,50,load_balance,Load priority,1109.48,0.64,87.22,0.3155,4849.59,1144.0
+study2,182007,50,load_balance,Load priority,1106.79,0.64,74.8,0.3136,4881.63,1155.0
+study2,182008,50,load_balance,Load priority,1111.27,0.6,77.6,0.3154,4861.47,1292.25
+study2,182009,50,load_balance,Load priority,1107.1,0.72,68.25,0.3152,4678.66,1210.0
+study2,182010,50,load_balance,Load priority,1129.24,0.64,80.67,0.3055,5017.58,1186.75
+study2,182011,50,load_balance,Load priority,1133.86,0.6,93.64,0.3094,4877.28,1171.75
+study2,182012,50,load_balance,Load priority,1131.03,0.7,77.42,0.3064,4631.21,1169.75
+study2,182013,50,load_balance,Load priority,1111.2,0.64,81.42,0.3119,4911.79,1091.5
+study2,182014,50,load_balance,Load priority,1062.15,0.68,73.9,0.3197,4497.92,1128.5
+study2,182015,50,load_balance,Load priority,1159.63,0.62,77.08,0.304,4950.55,1189.75
+study2,182016,50,load_balance,Load priority,1124.95,0.62,90.14,0.309,4968.13,1223.5
+study2,182017,50,load_balance,Load priority,1112.06,0.64,63.75,0.3153,4872.59,1212.25
+study2,182018,50,load_balance,Load priority,1164.32,0.64,85.57,0.3016,4920.13,1133.0
+study2,182019,50,load_balance,Load priority,1080.13,0.62,87.39,0.3191,4740.02,1086.25
+study2,182020,50,load_balance,Load priority,1158.94,0.64,86.6,0.3054,5045.37,1167.25
+study2,182021,50,load_balance,Load priority,1137.44,0.64,78.12,0.311,4913.54,1141.25
+study2,182022,50,load_balance,Load priority,1115.17,0.66,69.53,0.3113,4795.33,1201.5
+study2,182023,50,load_balance,Load priority,1092.63,0.68,88.38,0.3182,4834.8,1191.25
+study2,182024,50,load_balance,Load priority,1125.66,0.6,87.1,0.3082,5060.82,1161.5
+study2,182025,50,load_balance,Load priority,1201.65,0.62,96.27,0.3025,5216.12,1095.75
+study2,182026,50,load_balance,Load priority,1111.13,0.7,56.73,0.307,4546.57,1226.5
+study2,182027,50,load_balance,Load priority,1101.77,0.66,83.72,0.3124,4699.5,1224.25
+study2,182028,50,load_balance,Load priority,1080.88,0.66,73.43,0.3179,4617.16,1268.5
+study2,182029,50,load_balance,Load priority,1123.51,0.54,76.66,0.3109,5078.55,1152.0
+study2,182030,50,load_balance,Load priority,1137.64,0.64,83.02,0.3007,4979.01,1168.5
+study2,182031,50,load_balance,Load priority,1106.13,0.66,92.36,0.3116,4669.16,1211.25
+study2,182032,50,load_balance,Load priority,1115.02,0.62,71.33,0.3112,4928.06,1162.0
+study2,182033,50,load_balance,Load priority,1219.6,0.5,99.83,0.2885,5397.59,1129.25
+study2,182034,50,load_balance,Load priority,1141.26,0.64,80.68,0.3078,4898.68,1176.25
+study2,182035,50,load_balance,Load priority,1081.98,0.64,72.21,0.319,4715.11,1203.75
+study2,182036,50,load_balance,Load priority,1102.02,0.66,71.8,0.315,4687.7,1165.25
+study2,182037,50,load_balance,Load priority,1169.32,0.66,95.08,0.3049,5300.03,1139.0
+study2,182038,50,load_balance,Load priority,1091.4,0.66,75.45,0.3162,4735.12,1166.75
+study2,182039,50,load_balance,Load priority,1103.63,0.66,75.39,0.3144,4601.64,1127.25
+study2,182040,50,load_balance,Load priority,1124.14,0.7,64.66,0.3133,4881.42,1148.75
+study2,182041,50,load_balance,Load priority,1136.61,0.62,92.14,0.3074,4978.85,1225.5
+study2,182042,50,load_balance,Load priority,1177.96,0.62,100.18,0.2997,5200.1,1164.75
+study2,182043,50,load_balance,Load priority,1109.5,0.64,81.01,0.3169,4893.77,1166.0
+study2,182044,50,load_balance,Load priority,1118.05,0.66,78.78,0.3086,4633.8,1135.0
+study2,182045,50,load_balance,Load priority,1086.56,0.68,79.02,0.3185,4685.27,1167.0
+study2,182046,50,load_balance,Load priority,1112.95,0.62,85.99,0.3139,4874.67,1162.0
+study2,182047,50,load_balance,Load priority,1100.44,0.66,75.87,0.3165,4823.9,1224.5
+study2,182048,50,load_balance,Load priority,1101.45,0.68,72.59,0.3159,4862.47,1171.75
+study2,182049,50,load_balance,Load priority,1149.27,0.62,90.34,0.3035,5005.98,1151.25

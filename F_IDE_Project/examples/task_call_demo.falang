@@ -1,0 +1,17 @@
+// Task calls with and without a returned material.
+
+Resource CNC_1: Device<Process>;
+Material Pallet[1];
+
+Task SubProcess(Material x) {
+    // Processing creates a new SSA material version.
+    Process(CNC_1, x, "Op=Drill");
+    return x;
+}
+
+Task Main(Material Pallet) {
+    SubProcess(Pallet);
+
+    Result = SubProcess(Pallet);
+}
+

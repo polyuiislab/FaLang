@@ -1,0 +1,13 @@
+FaLang / F-IDE
+
+Project code, target models, simulation data, and documentation use the MIT License.
+License text: https://opensource.org/license/mit
+
+The F-IDE distribution includes assets/app_icon.ico and assets/falang_logo_b.png.
+On 2026-10-22, the project maintainer confirmed that these assets were created by
+the research group or authorized for public distribution. The MIT License grants
+no additional trademark rights in project names or logos and does not replace
+any original third-party asset permissions.
+
+Python, Graphviz, Matplotlib, and PyInstaller are installed separately and remain
+subject to their own licenses. Their installers and executables are not bundled.

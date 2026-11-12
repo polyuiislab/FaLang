@@ -1,0 +1,301 @@
+study,seed,orders,method,method_label,makespan,on_time_delivery_rate,mean_tardiness,resource_utilization,waiting_time,transport_time
+study3,182000,50,hybrid,HUR (CBC),1027.72,0.64,40.79,0.3298,4222.49,967.25
+study3,182001,50,hybrid,HUR (CBC),1000.55,0.7,56.23,0.3383,4123.14,965.5
+study3,182002,50,hybrid,HUR (CBC),1011.8,0.72,43.61,0.3378,4013.69,974.0
+study3,182003,50,hybrid,HUR (CBC),953.02,0.76,33.94,0.346,3639.66,941.5
+study3,182004,50,hybrid,HUR (CBC),1085.65,0.76,45.19,0.3135,4263.63,992.75
+study3,182005,50,hybrid,HUR (CBC),991.71,0.84,26.41,0.342,3741.76,958.25
+study3,182006,50,hybrid,HUR (CBC),1035.97,0.7,62.28,0.3263,4205.09,951.75
+study3,182007,50,hybrid,HUR (CBC),1000.34,0.68,41.73,0.3373,3974.58,963.5
+study3,182008,50,hybrid,HUR (CBC),1024.94,0.7,56.75,0.3332,4190.56,987.75
+study3,182009,50,hybrid,HUR (CBC),1046.19,0.72,59.65,0.3288,4300.74,975.5
+study3,182010,50,hybrid,HUR (CBC),983.91,0.76,40.5,0.3375,3868.11,947.0
+study3,182011,50,hybrid,HUR (CBC),1003.28,0.7,62.3,0.3324,4152.41,965.0
+study3,182012,50,hybrid,HUR (CBC),1032.73,0.7,66.77,0.333,4288.18,980.25
+study3,182013,50,hybrid,HUR (CBC),1036.1,0.68,58.43,0.3224,4177.52,960.5
+study3,182014,50,hybrid,HUR (CBC),993.35,0.7,58.35,0.338,3951.85,983.25
+study3,182015,50,hybrid,HUR (CBC),1047.61,0.66,51.49,0.325,4240.03,947.75
+study3,182016,50,hybrid,HUR (CBC),1032.76,0.66,61.35,0.3249,4218.72,962.25
+study3,182017,50,hybrid,HUR (CBC),983.4,0.72,31.94,0.3399,3810.85,937.0
+study3,182018,50,hybrid,HUR (CBC),1052.72,0.64,65.46,0.3203,4456.32,949.5
+study3,182019,50,hybrid,HUR (CBC),1032.22,0.64,69.34,0.3276,4335.95,974.5
+study3,182020,50,hybrid,HUR (CBC),999.43,0.74,59.41,0.339,3991.02,968.0
+study3,182021,50,hybrid,HUR (CBC),996.16,0.68,48.84,0.3379,4129.61,972.0
+study3,182022,50,hybrid,HUR (CBC),1061.52,0.7,53.41,0.3184,4252.24,948.5
+study3,182023,50,hybrid,HUR (CBC),1032.9,0.7,53.58,0.3252,4094.01,982.25
+study3,182024,50,hybrid,HUR (CBC),1061.69,0.7,60.69,0.3194,4487.84,954.0
+study3,182025,50,hybrid,HUR (CBC),1059.94,0.64,72.79,0.3283,4566.7,958.0
+study3,182026,50,hybrid,HUR (CBC),997.61,0.78,36.44,0.3345,3890.36,968.0
+study3,182027,50,hybrid,HUR (CBC),1075.43,0.66,72.68,0.3147,4479.44,979.5
+study3,182028,50,hybrid,HUR (CBC),996.65,0.74,46.1,0.3334,3909.0,991.25
+study3,182029,50,hybrid,HUR (CBC),1063.22,0.6,54.46,0.3206,4597.6,961.0
+study3,182030,50,hybrid,HUR (CBC),1004.65,0.72,39.84,0.3342,3856.09,975.25
+study3,182031,50,hybrid,HUR (CBC),1036.66,0.68,78.79,0.3294,4278.08,986.25
+study3,182032,50,hybrid,HUR (CBC),1029.08,0.72,48.72,0.3334,4076.27,941.0
+study3,182033,50,hybrid,HUR (CBC),1061.62,0.6,61.32,0.3266,4502.87,981.0
+study3,182034,50,hybrid,HUR (CBC),1067.26,0.66,63.86,0.3187,4468.1,970.0
+study3,182035,50,hybrid,HUR (CBC),1055.11,0.74,46.34,0.3206,4063.76,977.75
+study3,182036,50,hybrid,HUR (CBC),983.97,0.74,34.25,0.3441,3692.81,954.0
+study3,182037,50,hybrid,HUR (CBC),1065.45,0.7,68.39,0.3217,4575.65,959.75
+study3,182038,50,hybrid,HUR (CBC),958.42,0.76,38.71,0.3498,3641.66,961.25
+study3,182039,50,hybrid,HUR (CBC),1021.63,0.68,55.35,0.329,4012.18,963.5
+study3,182040,50,hybrid,HUR (CBC),1002.05,0.74,49.66,0.3357,4114.55,980.25
+study3,182041,50,hybrid,HUR (CBC),958.95,0.74,45.21,0.3452,3706.31,951.5
+study3,182042,50,hybrid,HUR (CBC),1062.03,0.66,71.85,0.317,4510.83,982.0
+study3,182043,50,hybrid,HUR (CBC),1009.28,0.7,45.52,0.3327,4016.23,955.75
+study3,182044,50,hybrid,HUR (CBC),989.14,0.68,52.59,0.3365,3888.63,964.25
+study3,182045,50,hybrid,HUR (CBC),979.48,0.72,53.2,0.3409,3888.34,961.25
+study3,182046,50,hybrid,HUR (CBC),1079.92,0.66,70.07,0.3183,4472.46,977.25
+study3,182047,50,hybrid,HUR (CBC),1059.82,0.64,60.87,0.3198,4458.04,978.5
+study3,182048,50,hybrid,HUR (CBC),1060.0,0.68,62.67,0.3271,4434.96,954.0
+study3,182049,50,hybrid,HUR (CBC),944.32,0.76,35.83,0.3542,3475.37,970.5
+study3,182000,50,reactive,Reactive,1047.09,0.68,45.75,0.327,4259.22,1025.0
+study3,182001,50,reactive,Reactive,1043.0,0.68,65.13,0.3265,4307.84,957.25
+study3,182002,50,reactive,Reactive,1009.91,0.68,44.77,0.3365,4043.43,997.5
+study3,182003,50,reactive,Reactive,1055.2,0.64,56.94,0.3189,4318.05,1002.5
+study3,182004,50,reactive,Reactive,1033.08,0.76,45.31,0.3267,4184.11,1014.0
+study3,182005,50,reactive,Reactive,1155.6,0.58,65.52,0.3045,4910.27,1005.5
+study3,182006,50,reactive,Reactive,1080.63,0.68,80.82,0.3177,4619.45,996.75
+study3,182007,50,reactive,Reactive,1001.92,0.72,38.72,0.3344,3859.85,965.25
+study3,182008,50,reactive,Reactive,1027.71,0.7,62.09,0.3333,4326.38,1008.0
+study3,182009,50,reactive,Reactive,1077.2,0.7,60.35,0.315,4392.96,1007.0
+study3,182010,50,reactive,Reactive,1010.86,0.68,49.23,0.3299,4095.19,989.75
+study3,182011,50,reactive,Reactive,1037.33,0.64,72.23,0.3245,4263.75,993.25
+study3,182012,50,reactive,Reactive,1078.22,0.68,74.51,0.32,4487.61,977.25
+study3,182013,50,reactive,Reactive,1165.72,0.64,85.26,0.2946,4922.16,1001.5
+study3,182014,50,reactive,Reactive,1050.02,0.68,70.29,0.3207,4298.16,982.75
+study3,182015,50,reactive,Reactive,1007.39,0.76,42.33,0.3306,4044.46,971.0
+study3,182016,50,reactive,Reactive,1128.11,0.62,74.26,0.3013,4662.21,1014.75
+study3,182017,50,reactive,Reactive,1079.36,0.68,50.47,0.3165,4474.7,989.0
+study3,182018,50,reactive,Reactive,1135.7,0.6,97.13,0.3078,5149.54,1024.75
+study3,182019,50,reactive,Reactive,1020.31,0.72,62.4,0.3296,4285.61,975.0
+study3,182020,50,reactive,Reactive,1018.62,0.74,63.1,0.3331,4174.47,958.25
+study3,182021,50,reactive,Reactive,1083.53,0.66,67.99,0.32,4713.37,986.5
+study3,182022,50,reactive,Reactive,1095.61,0.68,66.56,0.3138,4659.01,1002.25
+study3,182023,50,reactive,Reactive,1106.78,0.7,70.19,0.3108,4389.82,988.75
+study3,182024,50,reactive,Reactive,1082.46,0.7,63.79,0.3153,4661.52,975.25
+study3,182025,50,reactive,Reactive,1067.58,0.64,75.29,0.323,4675.57,995.0
+study3,182026,50,reactive,Reactive,1077.06,0.74,45.04,0.3103,4245.32,993.5
+study3,182027,50,reactive,Reactive,1107.06,0.66,82.66,0.3094,4791.37,965.25
+study3,182028,50,reactive,Reactive,988.84,0.72,48.54,0.3343,3910.01,1030.75
+study3,182029,50,reactive,Reactive,1089.31,0.64,55.73,0.3126,4733.37,1011.25
+study3,182030,50,reactive,Reactive,1041.88,0.68,57.73,0.3269,4301.13,959.75
+study3,182031,50,reactive,Reactive,1080.83,0.6,96.1,0.3167,4664.61,1018.75
+study3,182032,50,reactive,Reactive,1092.92,0.68,66.49,0.3127,4662.66,1024.25
+study3,182033,50,reactive,Reactive,1064.83,0.64,58.68,0.3254,4503.68,1002.0
+study3,182034,50,reactive,Reactive,1125.19,0.64,83.07,0.3081,4898.01,999.25
+study3,182035,50,reactive,Reactive,1042.11,0.68,59.93,0.3312,4232.79,981.0
+study3,182036,50,reactive,Reactive,1113.9,0.7,67.54,0.3094,4910.71,1012.25
+study3,182037,50,reactive,Reactive,1038.21,0.68,63.37,0.3283,4406.88,986.5
+study3,182038,50,reactive,Reactive,1015.32,0.68,57.11,0.3336,4206.55,997.0
+study3,182039,50,reactive,Reactive,1094.4,0.66,79.29,0.3138,4567.2,997.25
+study3,182040,50,reactive,Reactive,1085.96,0.66,68.96,0.3176,4664.2,1011.5
+study3,182041,50,reactive,Reactive,1025.42,0.74,57.77,0.3244,4118.64,964.0
+study3,182042,50,reactive,Reactive,1070.6,0.66,77.02,0.3191,4627.41,977.0
+study3,182043,50,reactive,Reactive,992.03,0.7,47.23,0.3386,3869.76,1012.25
+study3,182044,50,reactive,Reactive,1061.15,0.64,74.65,0.3256,4480.66,978.75
+study3,182045,50,reactive,Reactive,1087.74,0.68,74.37,0.32,4528.29,990.5
+study3,182046,50,reactive,Reactive,1068.9,0.66,75.2,0.3215,4469.49,1001.75
+study3,182047,50,reactive,Reactive,1189.44,0.58,89.03,0.2928,5159.36,1037.5
+study3,182048,50,reactive,Reactive,1105.92,0.66,76.53,0.3133,4872.92,972.5
+study3,182049,50,reactive,Reactive,1018.11,0.68,59.34,0.3313,4209.22,999.75
+study3,182000,50,predefinition,Predefined,1306.39,0.66,82.43,0.244,5402.86,936.75
+study3,182001,50,predefinition,Predefined,1386.62,0.5,134.31,0.2306,6266.71,954.5
+study3,182002,50,predefinition,Predefined,1239.62,0.68,81.88,0.2595,5043.98,936.0
+study3,182003,50,predefinition,Predefined,1360.87,0.62,109.84,0.2352,5852.5,968.75
+study3,182004,50,predefinition,Predefined,1165.74,0.6,84.49,0.2719,5249.05,940.25
+study3,182005,50,predefinition,Predefined,1625.35,0.6,96.0,0.1995,6404.95,950.25
+study3,182006,50,predefinition,Predefined,1305.29,0.52,142.17,0.244,5980.44,948.0
+study3,182007,50,predefinition,Predefined,1356.93,0.62,95.45,0.2306,5712.73,960.25
+study3,182008,50,predefinition,Predefined,1390.4,0.44,191.18,0.23,6839.79,940.5
+study3,182009,50,predefinition,Predefined,1372.24,0.56,119.56,0.2318,5972.03,947.0
+study3,182010,50,predefinition,Predefined,1305.0,0.62,78.99,0.2441,5493.88,950.5
+study3,182011,50,predefinition,Predefined,1142.22,0.58,100.96,0.2765,4967.45,952.25
+study3,182012,50,predefinition,Predefined,1357.36,0.58,122.54,0.2362,5813.12,959.25
+study3,182013,50,predefinition,Predefined,1298.39,0.54,141.88,0.245,6049.84,976.0
+study3,182014,50,predefinition,Predefined,1236.52,0.58,129.57,0.2536,5699.17,964.25
+study3,182015,50,predefinition,Predefined,1148.34,0.68,69.54,0.2742,4791.71,953.25
+study3,182016,50,predefinition,Predefined,1362.81,0.58,113.95,0.2342,5589.81,944.75
+study3,182017,50,predefinition,Predefined,1258.49,0.48,115.79,0.2533,5828.37,961.25
+study3,182018,50,predefinition,Predefined,1516.04,0.56,132.61,0.212,6424.88,949.0
+study3,182019,50,predefinition,Predefined,1236.56,0.54,142.97,0.2562,5821.81,954.0
+study3,182020,50,predefinition,Predefined,1495.84,0.54,168.15,0.2162,6749.73,954.0
+study3,182021,50,predefinition,Predefined,1231.56,0.6,100.87,0.2564,5462.75,973.25
+study3,182022,50,predefinition,Predefined,1276.9,0.64,81.77,0.2455,5192.31,941.25
+study3,182023,50,predefinition,Predefined,1480.99,0.6,126.95,0.2165,6294.81,960.0
+study3,182024,50,predefinition,Predefined,1302.93,0.54,125.97,0.2462,6062.96,939.75
+study3,182025,50,predefinition,Predefined,1607.95,0.4,303.93,0.2021,8699.54,981.0
+study3,182026,50,predefinition,Predefined,1356.12,0.66,82.95,0.2332,5530.21,953.5
+study3,182027,50,predefinition,Predefined,1363.31,0.56,171.82,0.2335,6838.86,960.0
+study3,182028,50,predefinition,Predefined,1266.11,0.56,103.59,0.2494,5478.77,942.25
+study3,182029,50,predefinition,Predefined,1511.0,0.5,148.12,0.2089,6689.91,951.0
+study3,182030,50,predefinition,Predefined,1499.75,0.5,177.3,0.2138,7208.02,978.0
+study3,182031,50,predefinition,Predefined,1362.69,0.6,162.83,0.2359,6370.08,953.5
+study3,182032,50,predefinition,Predefined,1254.34,0.52,117.07,0.254,5656.14,936.0
+study3,182033,50,predefinition,Predefined,1251.55,0.46,120.85,0.2548,5787.14,969.75
+study3,182034,50,predefinition,Predefined,1449.61,0.6,138.49,0.2187,6388.52,952.75
+study3,182035,50,predefinition,Predefined,1280.68,0.58,101.8,0.2492,5377.75,979.5
+study3,182036,50,predefinition,Predefined,1477.04,0.5,156.13,0.2157,7008.8,946.0
+study3,182037,50,predefinition,Predefined,1361.0,0.62,110.34,0.2364,5627.8,945.0
+study3,182038,50,predefinition,Predefined,1286.23,0.6,120.4,0.2464,5859.45,956.25
+study3,182039,50,predefinition,Predefined,1195.26,0.64,88.07,0.2628,4893.04,953.0
+study3,182040,50,predefinition,Predefined,1334.75,0.5,136.79,0.2394,6217.03,955.5
+study3,182041,50,predefinition,Predefined,1228.42,0.6,116.38,0.2586,5700.91,959.75
+study3,182042,50,predefinition,Predefined,1444.9,0.54,163.65,0.2205,6553.51,953.25
+study3,182043,50,predefinition,Predefined,1249.12,0.6,96.11,0.2568,5197.37,961.25
+study3,182044,50,predefinition,Predefined,1170.55,0.62,102.0,0.2712,5007.54,962.75
+study3,182045,50,predefinition,Predefined,1234.08,0.54,146.66,0.2606,5919.73,971.0
+study3,182046,50,predefinition,Predefined,1276.56,0.6,114.31,0.247,5612.71,942.75
+study3,182047,50,predefinition,Predefined,1255.95,0.64,98.26,0.2515,5403.96,957.75
+study3,182048,50,predefinition,Predefined,1528.44,0.6,131.67,0.2139,6927.23,962.0
+study3,182049,50,predefinition,Predefined,1154.47,0.68,75.31,0.2726,4732.06,938.75
+study3,182000,50,hybrid@event_order,HUR (Order),1116.83,0.62,72.2,0.3223,5017.88,1011.5
+study3,182001,50,hybrid@event_order,HUR (Order),1193.64,0.52,118.99,0.3133,5444.71,971.25
+study3,182002,50,hybrid@event_order,HUR (Order),1125.02,0.68,74.6,0.3182,4938.85,1003.75
+study3,182003,50,hybrid@event_order,HUR (Order),1121.87,0.6,88.67,0.3194,5012.34,1017.25
+study3,182004,50,hybrid@event_order,HUR (Order),1100.16,0.68,61.72,0.3192,4719.71,1004.75
+study3,182005,50,hybrid@event_order,HUR (Order),1190.8,0.6,80.58,0.3128,5258.36,1002.5
+study3,182006,50,hybrid@event_order,HUR (Order),1076.43,0.66,82.4,0.3287,4781.07,1015.5
+study3,182007,50,hybrid@event_order,HUR (Order),1143.56,0.66,79.88,0.3197,5106.05,1005.25
+study3,182008,50,hybrid@event_order,HUR (Order),1177.67,0.52,105.71,0.3119,5330.37,999.0
+study3,182009,50,hybrid@event_order,HUR (Order),1224.22,0.56,117.1,0.2995,5594.43,1004.75
+study3,182010,50,hybrid@event_order,HUR (Order),1144.31,0.62,88.42,0.3146,5337.57,973.75
+study3,182011,50,hybrid@event_order,HUR (Order),1115.35,0.6,91.4,0.326,4795.85,999.75
+study3,182012,50,hybrid@event_order,HUR (Order),1296.39,0.52,151.56,0.292,6111.47,1030.5
+study3,182013,50,hybrid@event_order,HUR (Order),1149.32,0.6,93.98,0.3105,5040.94,992.25
+study3,182014,50,hybrid@event_order,HUR (Order),1228.17,0.58,128.74,0.2993,5678.63,983.5
+study3,182015,50,hybrid@event_order,HUR (Order),1130.81,0.62,77.18,0.3173,4931.57,970.0
+study3,182016,50,hybrid@event_order,HUR (Order),1210.58,0.56,120.74,0.3022,5708.7,1009.75
+study3,182017,50,hybrid@event_order,HUR (Order),1169.14,0.62,74.93,0.3119,5111.51,974.5
+study3,182018,50,hybrid@event_order,HUR (Order),1185.22,0.62,91.63,0.2987,5123.59,1015.25
+study3,182019,50,hybrid@event_order,HUR (Order),1171.78,0.54,121.55,0.3027,5413.86,1010.0
+study3,182020,50,hybrid@event_order,HUR (Order),1267.29,0.54,133.97,0.2968,5833.75,1013.75
+study3,182021,50,hybrid@event_order,HUR (Order),1113.33,0.64,83.61,0.3249,5044.45,979.25
+study3,182022,50,hybrid@event_order,HUR (Order),1146.38,0.64,80.52,0.3143,4998.56,995.25
+study3,182023,50,hybrid@event_order,HUR (Order),1216.68,0.6,118.81,0.3069,5783.6,1001.0
+study3,182024,50,hybrid@event_order,HUR (Order),1097.52,0.68,67.55,0.3198,4664.21,981.75
+study3,182025,50,hybrid@event_order,HUR (Order),1234.45,0.54,135.28,0.3039,5951.23,996.5
+study3,182026,50,hybrid@event_order,HUR (Order),1182.24,0.64,72.89,0.3013,5152.54,1008.0
+study3,182027,50,hybrid@event_order,HUR (Order),1169.31,0.64,85.07,0.3041,4721.09,999.75
+study3,182028,50,hybrid@event_order,HUR (Order),1023.4,0.74,53.48,0.3377,4084.58,1014.75
+study3,182029,50,hybrid@event_order,HUR (Order),1239.22,0.54,117.53,0.2935,5752.31,969.0
+study3,182030,50,hybrid@event_order,HUR (Order),1140.1,0.64,84.54,0.3154,5073.13,1007.0
+study3,182031,50,hybrid@event_order,HUR (Order),1262.7,0.62,134.14,0.2936,5805.96,1018.5
+study3,182032,50,hybrid@event_order,HUR (Order),1121.04,0.68,63.1,0.3154,4621.35,1002.75
+study3,182033,50,hybrid@event_order,HUR (Order),1199.4,0.5,106.33,0.3074,5388.62,991.0
+study3,182034,50,hybrid@event_order,HUR (Order),1229.34,0.58,115.65,0.3033,5636.06,987.0
+study3,182035,50,hybrid@event_order,HUR (Order),1159.07,0.6,85.31,0.3131,5121.04,1012.25
+study3,182036,50,hybrid@event_order,HUR (Order),1087.84,0.68,60.1,0.3263,4587.29,966.75
+study3,182037,50,hybrid@event_order,HUR (Order),1203.08,0.64,96.67,0.3013,5335.76,1001.5
+study3,182038,50,hybrid@event_order,HUR (Order),1129.41,0.68,79.36,0.3204,4850.06,971.75
+study3,182039,50,hybrid@event_order,HUR (Order),1054.86,0.68,68.19,0.3313,4297.26,961.5
+study3,182040,50,hybrid@event_order,HUR (Order),1200.94,0.56,109.01,0.3073,5537.16,1035.75
+study3,182041,50,hybrid@event_order,HUR (Order),1116.46,0.64,85.73,0.318,4966.74,980.25
+study3,182042,50,hybrid@event_order,HUR (Order),1123.97,0.64,84.72,0.3198,4998.41,973.25
+study3,182043,50,hybrid@event_order,HUR (Order),1136.31,0.66,80.62,0.3198,4923.28,1001.25
+study3,182044,50,hybrid@event_order,HUR (Order),1192.33,0.58,101.87,0.3008,5024.82,1025.75
+study3,182045,50,hybrid@event_order,HUR (Order),1131.48,0.62,90.05,0.3191,4911.47,1006.25
+study3,182046,50,hybrid@event_order,HUR (Order),1144.95,0.58,105.05,0.3104,5105.05,1035.75
+study3,182047,50,hybrid@event_order,HUR (Order),1122.42,0.66,73.95,0.3159,4946.58,982.5
+study3,182048,50,hybrid@event_order,HUR (Order),1301.25,0.58,106.97,0.2881,5861.74,1005.5
+study3,182049,50,hybrid@event_order,HUR (Order),1094.23,0.68,66.33,0.3214,4396.18,1002.0
+study3,182000,50,hybrid@machine_group,HUR (Group),1036.22,0.72,38.66,0.3248,4132.72,1011.25
+study3,182001,50,hybrid@machine_group,HUR (Group),1129.63,0.64,90.38,0.3071,4919.31,1014.25
+study3,182002,50,hybrid@machine_group,HUR (Group),1056.71,0.68,53.54,0.3236,4277.12,989.5
+study3,182003,50,hybrid@machine_group,HUR (Group),1016.02,0.68,50.56,0.3275,4136.5,1033.75
+study3,182004,50,hybrid@machine_group,HUR (Group),1119.15,0.6,70.42,0.3057,4878.56,1036.25
+study3,182005,50,hybrid@machine_group,HUR (Group),1093.49,0.64,50.2,0.32,4533.82,992.5
+study3,182006,50,hybrid@machine_group,HUR (Group),1046.33,0.7,64.51,0.3269,4238.52,966.25
+study3,182007,50,hybrid@machine_group,HUR (Group),1046.46,0.68,54.63,0.3256,4341.89,985.75
+study3,182008,50,hybrid@machine_group,HUR (Group),1089.83,0.68,66.93,0.3181,4620.95,986.0
+study3,182009,50,hybrid@machine_group,HUR (Group),1068.55,0.7,67.79,0.3174,4551.03,995.0
+study3,182010,50,hybrid@machine_group,HUR (Group),1017.83,0.68,52.39,0.3291,4162.32,975.0
+study3,182011,50,hybrid@machine_group,HUR (Group),1037.08,0.68,68.31,0.323,4276.23,978.25
+study3,182012,50,hybrid@machine_group,HUR (Group),1163.33,0.64,98.7,0.3056,5070.04,1022.75
+study3,182013,50,hybrid@machine_group,HUR (Group),1069.59,0.64,66.37,0.3195,4318.49,990.25
+study3,182014,50,hybrid@machine_group,HUR (Group),1100.78,0.64,79.68,0.3097,4560.13,987.25
+study3,182015,50,hybrid@machine_group,HUR (Group),1047.44,0.7,51.98,0.3214,4320.47,992.0
+study3,182016,50,hybrid@machine_group,HUR (Group),1079.83,0.68,66.11,0.3171,4539.25,1030.5
+study3,182017,50,hybrid@machine_group,HUR (Group),1006.69,0.74,43.73,0.3362,4119.18,972.25
+study3,182018,50,hybrid@machine_group,HUR (Group),1126.3,0.64,79.23,0.3046,4754.44,999.25
+study3,182019,50,hybrid@machine_group,HUR (Group),1089.13,0.62,81.77,0.3106,4675.08,974.0
+study3,182020,50,hybrid@machine_group,HUR (Group),1074.67,0.76,61.51,0.3182,4154.7,984.75
+study3,182021,50,hybrid@machine_group,HUR (Group),1056.89,0.62,63.88,0.3235,4576.17,1006.0
+study3,182022,50,hybrid@machine_group,HUR (Group),1048.95,0.7,54.01,0.3244,4156.67,985.75
+study3,182023,50,hybrid@machine_group,HUR (Group),1090.6,0.7,70.26,0.3127,4476.39,1001.5
+study3,182024,50,hybrid@machine_group,HUR (Group),1160.79,0.64,84.81,0.3003,5165.39,966.75
+study3,182025,50,hybrid@machine_group,HUR (Group),1145.39,0.62,95.19,0.3122,5203.77,1059.0
+study3,182026,50,hybrid@machine_group,HUR (Group),1061.63,0.7,45.7,0.3172,4182.55,1002.0
+study3,182027,50,hybrid@machine_group,HUR (Group),1165.95,0.64,88.57,0.2942,4896.8,1023.75
+study3,182028,50,hybrid@machine_group,HUR (Group),997.84,0.72,51.91,0.332,3995.38,996.25
+study3,182029,50,hybrid@machine_group,HUR (Group),1064.7,0.62,58.27,0.3187,4682.23,966.5
+study3,182030,50,hybrid@machine_group,HUR (Group),1063.65,0.7,56.29,0.3162,4380.66,984.5
+study3,182031,50,hybrid@machine_group,HUR (Group),1056.05,0.64,93.02,0.325,4621.93,1007.75
+study3,182032,50,hybrid@machine_group,HUR (Group),1087.6,0.66,61.9,0.3156,4511.41,1019.5
+study3,182033,50,hybrid@machine_group,HUR (Group),1074.53,0.56,68.45,0.3219,4682.8,975.5
+study3,182034,50,hybrid@machine_group,HUR (Group),1045.48,0.7,55.92,0.3238,4236.26,980.5
+study3,182035,50,hybrid@machine_group,HUR (Group),1031.25,0.7,54.18,0.3324,4253.35,1000.0
+study3,182036,50,hybrid@machine_group,HUR (Group),1048.61,0.68,55.57,0.321,4250.12,965.25
+study3,182037,50,hybrid@machine_group,HUR (Group),1079.17,0.66,74.82,0.3182,4674.84,986.5
+study3,182038,50,hybrid@machine_group,HUR (Group),1011.57,0.74,52.51,0.335,4149.08,958.75
+study3,182039,50,hybrid@machine_group,HUR (Group),1057.01,0.68,65.68,0.3224,4307.63,961.5
+study3,182040,50,hybrid@machine_group,HUR (Group),1116.92,0.68,66.31,0.3108,4691.07,1017.5
+study3,182041,50,hybrid@machine_group,HUR (Group),1104.8,0.7,77.14,0.3126,4649.78,1014.25
+study3,182042,50,hybrid@machine_group,HUR (Group),1086.78,0.66,77.07,0.3182,4736.71,1010.75
+study3,182043,50,hybrid@machine_group,HUR (Group),986.02,0.7,44.45,0.3397,3898.63,989.5
+study3,182044,50,hybrid@machine_group,HUR (Group),1018.32,0.66,54.2,0.3323,4056.46,985.0
+study3,182045,50,hybrid@machine_group,HUR (Group),1048.49,0.72,64.88,0.3247,4375.05,1018.5
+study3,182046,50,hybrid@machine_group,HUR (Group),1076.32,0.66,75.79,0.3164,4592.0,1007.25
+study3,182047,50,hybrid@machine_group,HUR (Group),1100.94,0.66,69.27,0.3077,4757.05,981.75
+study3,182048,50,hybrid@machine_group,HUR (Group),1124.74,0.62,69.38,0.3122,4778.75,1001.25
+study3,182049,50,hybrid@machine_group,HUR (Group),1009.3,0.68,51.14,0.3375,4169.94,1011.75
+study3,182000,50,hybrid@whole_workset,HUR (All),1081.53,0.64,65.02,0.3186,4715.37,1002.0
+study3,182001,50,hybrid@whole_workset,HUR (All),1128.07,0.62,82.25,0.3109,4806.36,974.5
+study3,182002,50,hybrid@whole_workset,HUR (All),1077.34,0.68,55.52,0.3247,4367.14,974.75
+study3,182003,50,hybrid@whole_workset,HUR (All),975.94,0.72,37.02,0.3408,3732.75,984.75
+study3,182004,50,hybrid@whole_workset,HUR (All),1093.6,0.72,52.31,0.31,4446.14,993.0
+study3,182005,50,hybrid@whole_workset,HUR (All),1120.11,0.72,51.4,0.3135,4652.19,987.25
+study3,182006,50,hybrid@whole_workset,HUR (All),1163.92,0.62,100.81,0.3036,5261.0,1014.0
+study3,182007,50,hybrid@whole_workset,HUR (All),1144.33,0.62,84.56,0.3059,5063.16,1006.5
+study3,182008,50,hybrid@whole_workset,HUR (All),1090.82,0.6,82.59,0.3219,4858.51,1002.0
+study3,182009,50,hybrid@whole_workset,HUR (All),1136.9,0.62,81.75,0.3068,5068.33,1000.75
+study3,182010,50,hybrid@whole_workset,HUR (All),1004.54,0.68,51.71,0.3386,4093.16,978.0
+study3,182011,50,hybrid@whole_workset,HUR (All),1044.8,0.68,67.17,0.3241,4234.6,1005.5
+study3,182012,50,hybrid@whole_workset,HUR (All),1135.52,0.6,104.04,0.3165,5129.65,1025.0
+study3,182013,50,hybrid@whole_workset,HUR (All),1054.93,0.66,65.62,0.3265,4321.58,981.5
+study3,182014,50,hybrid@whole_workset,HUR (All),1207.6,0.58,123.14,0.2944,5494.7,984.0
+study3,182015,50,hybrid@whole_workset,HUR (All),1061.15,0.64,61.02,0.3209,4412.17,991.25
+study3,182016,50,hybrid@whole_workset,HUR (All),1074.42,0.6,77.22,0.3171,4557.83,999.5
+study3,182017,50,hybrid@whole_workset,HUR (All),1110.51,0.64,54.72,0.318,4617.78,993.75
+study3,182018,50,hybrid@whole_workset,HUR (All),1247.57,0.56,135.79,0.295,5868.28,1044.5
+study3,182019,50,hybrid@whole_workset,HUR (All),1061.52,0.6,79.23,0.324,4561.86,998.5
+study3,182020,50,hybrid@whole_workset,HUR (All),1106.63,0.7,72.22,0.3072,4540.14,998.5
+study3,182021,50,hybrid@whole_workset,HUR (All),1086.5,0.64,73.69,0.3154,4782.35,1003.25
+study3,182022,50,hybrid@whole_workset,HUR (All),1091.48,0.68,67.63,0.3142,4591.81,988.75
+study3,182023,50,hybrid@whole_workset,HUR (All),1087.38,0.7,76.79,0.3162,4590.37,992.5
+study3,182024,50,hybrid@whole_workset,HUR (All),1246.8,0.64,96.3,0.2906,5680.59,998.0
+study3,182025,50,hybrid@whole_workset,HUR (All),1129.9,0.66,89.34,0.317,5036.95,1005.0
+study3,182026,50,hybrid@whole_workset,HUR (All),1111.07,0.68,60.11,0.3122,4698.23,995.5
+study3,182027,50,hybrid@whole_workset,HUR (All),1090.62,0.64,83.64,0.3194,4668.64,989.75
+study3,182028,50,hybrid@whole_workset,HUR (All),1047.02,0.72,57.72,0.3248,4260.01,999.25
+study3,182029,50,hybrid@whole_workset,HUR (All),1144.67,0.56,87.52,0.3043,5239.28,993.75
+study3,182030,50,hybrid@whole_workset,HUR (All),1083.28,0.68,64.16,0.3144,4552.45,996.5
+study3,182031,50,hybrid@whole_workset,HUR (All),1197.26,0.64,115.22,0.2978,5482.21,1012.25
+study3,182032,50,hybrid@whole_workset,HUR (All),1195.44,0.62,82.86,0.295,5070.33,1008.75
+study3,182033,50,hybrid@whole_workset,HUR (All),1175.59,0.6,74.51,0.303,5186.27,982.75
+study3,182034,50,hybrid@whole_workset,HUR (All),1100.01,0.66,77.49,0.3188,4749.61,1005.0
+study3,182035,50,hybrid@whole_workset,HUR (All),1033.48,0.68,57.47,0.3299,4197.61,1036.25
+study3,182036,50,hybrid@whole_workset,HUR (All),1130.81,0.68,54.13,0.3033,4378.05,990.5
+study3,182037,50,hybrid@whole_workset,HUR (All),1177.1,0.64,103.06,0.3073,5509.98,1024.5
+study3,182038,50,hybrid@whole_workset,HUR (All),987.69,0.72,51.36,0.3409,3988.97,978.25
+study3,182039,50,hybrid@whole_workset,HUR (All),1112.86,0.66,86.43,0.3121,4940.21,1000.0
+study3,182040,50,hybrid@whole_workset,HUR (All),1241.81,0.62,84.67,0.2882,5188.37,1010.5
+study3,182041,50,hybrid@whole_workset,HUR (All),1057.76,0.68,66.47,0.3232,4436.95,1020.5
+study3,182042,50,hybrid@whole_workset,HUR (All),1115.18,0.6,90.51,0.3174,4903.36,986.0
+study3,182043,50,hybrid@whole_workset,HUR (All),1031.3,0.66,58.34,0.3283,4269.88,971.5
+study3,182044,50,hybrid@whole_workset,HUR (All),1091.24,0.64,78.4,0.3195,4571.13,995.25
+study3,182045,50,hybrid@whole_workset,HUR (All),1085.11,0.68,77.87,0.3203,4522.63,997.5
+study3,182046,50,hybrid@whole_workset,HUR (All),1071.69,0.66,75.96,0.3185,4519.88,1028.0
+study3,182047,50,hybrid@whole_workset,HUR (All),1137.43,0.62,71.26,0.3025,4772.72,1018.75
+study3,182048,50,hybrid@whole_workset,HUR (All),1070.16,0.64,65.55,0.3303,4668.1,966.0
+study3,182049,50,hybrid@whole_workset,HUR (All),958.7,0.76,39.28,0.3448,3724.19,1013.75

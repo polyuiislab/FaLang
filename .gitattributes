@@ -1,0 +1,6 @@
+# Preserve bytes used by source and data integrity checks.
+benchmarks/** -text
+configs/** -text
+data/** -text
+*.png binary
+*.ico binary

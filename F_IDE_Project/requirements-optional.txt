@@ -1,0 +1,4 @@
+# Result plots
+matplotlib>=3.9
+# Executable packaging
+pyinstaller>=6.0.0

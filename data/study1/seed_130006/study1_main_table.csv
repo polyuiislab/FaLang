@@ -1,0 +1,4 @@
+domain,paradigm,workstations,holding_sites,holding_capacity,capability_definitions,logical_roles,process_rules,protection_rules,protection_signatures,catch_edge_ops_per_order,exception_table_entries,grammar_modification,compiler_core_modification,source_modification_across_Ft,realization_success,immediate_placement_normal,immediate_placement_high_occupancy,immediate_placement_machine_down,memory_spills,compile_failures
+pc_assembly,matrix,9,18,2,16,5,12,3,2,5.78,289,0,0,0,1.0,1.0,0.85,0.85,0,0
+garment,flexible_assembly_line,9,18,2,16,5,11,4,4,4.96,298,0,0,0,1.0,1.0,0.835,0.929,0,0
+cnc_machining,flexible_job_shop,9,18,2,15,6,10,4,4,5.44,316,0,0,0,1.0,1.0,0.8882,0.8937,0,0

@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "factory_name": "Micro_CNC_Inspection_Plant",
+    "version": "2.0"
+  },
+  "instruction_capability_set": {
+    "supported_instructions": [
+      {
+        "opcode": "000001",
+        "func": "001",
+        "name": "PROCESS",
+        "supported_rp": [
+          {"rp": "00001", "description": "High_Precision_CNC_Milling"},
+          {"rp": "00010", "description": "Laser_Engraving"}
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "010",
+        "name": "MOVE",
+        "supported_rp": [
+          {"rp": "00000", "description": "AGV_Move_Between_L1_L2_And_Workstations"}
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "name": "INSPECT",
+        "supported_rp": [
+          {"rp": "00001", "description": "Camera_Vision_Check"}
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "100",
+        "name": "ADJUST",
+        "supported_rp": [
+          {"rp": "00001", "description": "Emergency_Unlock_Fixture"}
+        ]
+      },
+      {
+        "opcode": "100101",
+        "func": "000",
+        "name": "PLOAD",
+        "supported_rp": [
+          {"rp": "00000", "description": "AGV_Load_From_Warehouse_To_Target_Storage"}
+        ]
+      },
+      {
+        "opcode": "101101",
+        "func": "000",
+        "name": "PSTORE",
+        "supported_rp": [
+          {"rp": "00000", "description": "AGV_Store_From_Source_Storage_Back_To_Warehouse"}
+        ]
+      }
+    ],
+    "palu_definitions": [
+      {
+        "palu_id": 0,
+        "device_type": "CNC_Machine",
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "001", "rp": "00001"},
+          {"opcode": "000001", "func": "001", "rp": "00010"},
+          {"opcode": "000001", "func": "100", "rp": "00001"}
+        ]
+      },
+      {
+        "palu_id": 1,
+        "device_type": "Inspection_Camera",
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "011", "rp": "00001"}
+        ]
+      },
+      {
+        "palu_id": 2,
+        "device_type": "Transport_AGV",
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "010", "rp": "00000"},
+          {"opcode": "100101", "func": "000", "rp": "00000"},
+          {"opcode": "101101", "func": "000", "rp": "00000"}
+        ]
+      }
+    ]
+  },
+  "addressing_model": {
+    "storage_regions": {
+      "memory_ids": [100],
+      "register_ids": [0, 1, 2, 20, 21]
+    },
+    "workstation_mapping": [
+      {
+        "workstation_id": 0,
+        "assigned_registers": [0, 1, 20],
+        "assigned_palus": [0, 2]
+      },
+      {
+        "workstation_id": 1,
+        "assigned_registers": [2, 21],
+        "assigned_palus": [1, 2]
+      }
+    ]
+  },
+  "storage_model": {
+    "capacity_constraints": [
+      {"storage_id": 0, "type": "register", "capacity": 2},
+      {"storage_id": 1, "type": "register", "capacity": 2},
+      {"storage_id": 2, "type": "register", "capacity": 1},
+      {"storage_id": 20, "type": "register", "capacity": 50},
+      {"storage_id": 21, "type": "register", "capacity": 50},
+      {"storage_id": 100, "type": "memory", "capacity": 10000}
+    ]
+  },
+  "runtime_environment": {
+    "default_catch_deadline": 20.0,
+    "min_catch_deadline": 1.0,
+    "fault_release_latency": 3.0,
+    "catch_triggers": [
+      {
+        "exception_type": "ResourceFault",
+        "trigger_operations": [
+          {"opcode": "000001", "func": "001", "rp": "00001"}
+        ]
+      }
+    ]
+  },
+  "scheduling_model": {
+    "logistics_time_matrix": {
+      "storage_index_map": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "20": 3,
+        "21": 4,
+        "100": 5
+      },
+      "matrix": [
+        [0, 1, 5, 2, 6, 20],
+        [1, 0, 5, 2, 6, 20],
+        [5, 5, 0, 6, 2, 20],
+        [2, 2, 6, 0, 4, 18],
+        [6, 6, 2, 4, 0, 18],
+        [20, 20, 20, 18, 18, 0]
+      ]
+    },
+    "processing_times": [
+      {"opcode": "000001", "func": "001", "rp": "00001", "expected_time": 45},
+      {"opcode": "000001", "func": "001", "rp": "00010", "expected_time": 25},
+      {"opcode": "000001", "func": "011", "rp": "00001", "expected_time": 5},
+      {"opcode": "000001", "func": "100", "rp": "00001", "expected_time": 2}
+    ],
+    "standard_logistics_times": [
+      {"from_type": "memory", "to_type": "register", "time": 20.0},
+      {"from_type": "register", "to_type": "memory", "time": 20.0},
+      {"from_type": "register", "to_type": "register", "time": 1.0},
+      {"from_type": "memory", "to_type": "memory", "time": 0.0}
+    ]
+  }
+}

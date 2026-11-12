@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "factory_name": "Motherboard_Assembly_Minimal_Cell",
+    "version": "1.0",
+    "scenario": "One workcell containing one assembly resource and one test resource"
+  },
+  "instruction_capability_set": {
+    "supported_instructions": [
+      {
+        "opcode": "000001",
+        "func": "001",
+        "name": "PROCESS",
+        "supported_rp": [
+          {"rp": "00010", "description": "CPU_Install"},
+          {"rp": "00101", "description": "GPU_Install"}
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "010",
+        "name": "MOVE",
+        "supported_rp": [
+          {"rp": "00000", "description": "Buffer_Transfer"}
+        ]
+      },
+      {
+        "opcode": "000001",
+        "func": "011",
+        "name": "INSPECT",
+        "supported_rp": [
+          {"rp": "00001", "description": "Power_On_Test"}
+        ]
+      },
+      {
+        "opcode": "101101",
+        "func": "000",
+        "name": "PSTORE",
+        "supported_rp": [
+          {"rp": "00000", "description": "Finished_Product_Storage"}
+        ]
+      }
+    ],
+    "palu_definitions": [
+      {
+        "palu_id": 0,
+        "device_type": "AssemblyCell",
+        "quantity": 1,
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "001", "rp": "00010"},
+          {"opcode": "000001", "func": "001", "rp": "00101"}
+        ]
+      },
+      {
+        "palu_id": 1,
+        "device_type": "TestCell",
+        "quantity": 1,
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "011", "rp": "00001"}
+        ]
+      },
+      {
+        "palu_id": 2,
+        "device_type": "TransferUnit",
+        "quantity": 1,
+        "supported_capabilities": [
+          {"opcode": "000001", "func": "010", "rp": "00000"},
+          {"opcode": "101101", "func": "000", "rp": "00000"}
+        ]
+      }
+    ]
+  },
+  "addressing_model": {
+    "storage_regions": {
+      "memory_ids": [100],
+      "register_ids": [0, 1, 2, 3]
+    },
+    "workstation_mapping": [
+      {"workstation_id": 0, "pm_type": "assembly_and_test", "assigned_registers": [0, 1, 2, 3], "assigned_palus": [0, 1, 2]}
+    ]
+  },
+  "storage_model": {
+    "capacity_constraints": [
+      {"storage_id": 0, "type": "register", "role": "workcell_buffer", "capacity": 4},
+      {"storage_id": 1, "type": "register", "role": "workcell_buffer", "capacity": 4},
+      {"storage_id": 2, "type": "register", "role": "workcell_buffer", "capacity": 4},
+      {"storage_id": 3, "type": "register", "role": "workcell_buffer", "capacity": 4},
+      {"storage_id": 100, "type": "memory", "role": "warehouse", "capacity": 100}
+    ]
+  },
+  "runtime_environment": {"catch_triggers": []},
+  "scheduling_model": {
+    "logistics_layout": {
+      "warehouse": {"storage_id": 100, "coord": [-1, 0]},
+      "warehouse_base_time": 2.0,
+      "pm_base_time": 1.0,
+      "distance_factor": 1.0,
+      "same_pm_time": 0.0,
+      "process_modules": [
+        {"workstation_id": 0, "pm_type": "assembly_and_test", "coord": [0, 0], "register_ids": [0, 1, 2, 3]}
+      ]
+    },
+    "processing_times": [
+      {"opcode": "000001", "func": "001", "rp": "00010", "expected_time": 4.0},
+      {"opcode": "000001", "func": "001", "rp": "00101", "expected_time": 5.0},
+      {"opcode": "000001", "func": "011", "rp": "00001", "expected_time": 3.0},
+      {"opcode": "101101", "func": "000", "rp": "00000", "expected_time": 2.0}
+    ],
+    "standard_logistics_times": [
+      {"from_type": "register", "to_type": "register", "time": 2.0},
+      {"from_type": "memory", "to_type": "register", "time": 2.0},
+      {"from_type": "register", "to_type": "memory", "time": 2.0},
+      {"from_type": "memory", "to_type": "memory", "time": 0.0}
+    ],
+    "setup_time_model": {"component_families": []}
+  }
+}

@@ -1,0 +1,79 @@
+// Language constructs for CFG and SSA inspection.
+
+Resource CNC_1: Device<Process, Adjust>;
+Resource AOI_1: Device<Inspect>;
+Resource Loader_1: Device<Load>;
+
+// The first angle group declares capabilities; the second declares capacity.
+Buffer WIP_Buffer: Memory<> <Capacity=2>;
+Storage Finished_Goods: Memory<>;
+
+// Batch size determines foreach unrolling.
+Material Pallet[3];
+Material ScrapBin[1];
+
+Task CheckAndLoad(Material part) {
+    int ok = IsAvailable(Loader_1);
+
+    if (ok == 1) {
+        Load(part);
+        Move(part);
+    } else {
+        Adjust(Loader_1, "ResetFeeder");
+    }
+
+    return part;
+}
+
+Task ProcessOne(Material part) {
+    try {
+        part2 = CheckAndLoad(part);
+
+        Process(CNC_1, part2, "Recipe=R1;Speed=1200");
+        Inspect(AOI_1, part2, "Tol=0.02");
+        Store(part2);
+    }
+    catch(ResourceFault) {
+        Adjust(CNC_1, "UnlockFixture");
+        Move(part);
+    }
+    compensate {
+        Adjust(CNC_1, "HomeAxes");
+        Adjust(AOI_1, "ClearAlarm");
+    }
+
+    // Task inlining requires a top-level return.
+    return part2;
+}
+
+Task Main(Material Pallet) {
+    Parallel {
+        CheckAndLoad(Pallet);
+
+        Move(Pallet);
+    }
+
+    foreach(item in Pallet) {
+        out = ProcessOne(item);
+
+        int good = IsAvailable(WIP_Buffer);
+        if (good == 1) {
+            Store(out);
+        } else {
+            Move(out);
+        }
+
+        try {
+            Inspect(AOI_1, out, "Final=1");
+        }
+        catch(MaterialMissing) {
+            Adjust(AOI_1, "ReScan");
+        }
+        compensate {
+            Adjust(AOI_1, "CloseCover");
+        }
+    }
+
+    Store(Pallet);
+    return Pallet;
+}

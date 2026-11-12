@@ -1,0 +1,28 @@
+Resource AssemblyCell: Device<Process>;
+Resource TestCell: Device<Inspect>;
+Material Motherboard;
+Material CPU;
+Material GPU;
+
+Task AssembleCPUAndGPU(Material board, Material cpu, Material gpu) {
+    Process(AssemblyCell, board, cpu, "CPU_Install");
+    Process(AssemblyCell, board, gpu, "GPU_Install");
+}
+
+Task ReassembleCPUAndGPU(Material board) {
+    Process(AssemblyCell, board, "CPU_Install");
+    Process(AssemblyCell, board, "GPU_Install");
+}
+
+Task TestMotherboard(Material board) {
+    int passed = Inspect(TestCell, board, "Power_On_Test");
+    if (passed == 0) {
+        ReassembleCPUAndGPU(board);
+    }
+    Store(board, "Finished_Product_Storage");
+}
+
+Task Main(Material Motherboard, Material CPU, Material GPU) {
+    AssembleCPUAndGPU(Motherboard, CPU, GPU);
+    TestMotherboard(Motherboard);
+}
